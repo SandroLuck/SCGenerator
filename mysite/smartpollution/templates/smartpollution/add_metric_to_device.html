@@ -1,0 +1,11 @@
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+
+<form action="{% url 'smartpollution:add_metric_to_device'%}" method="post">
+{% csrf_token %}
+{% for metric in objs %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ metric.id}}" />
+    <label for="choice{{ forloop.counter }}">{{ metric.physical_property }} in {{metric.unit_of_measurement}}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>

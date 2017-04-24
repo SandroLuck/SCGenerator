@@ -1,0 +1,11 @@
+<h1>Choose and existing device or create new one</h1>
+{% if device_name_list %}
+    <ul>
+    {% for device in device_name_list %}
+        <li><a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }}</a></li>    {% endfor %}
+    </ul>
+{% else %}
+    <p>No devices are available.</p>
+{% endif %}
+<li><a href="{% url 'smartpollution:register_device' %}">Register a new device</a></li>
+<li><a href="{% url 'smartpollution:register_metric' %}">Register a new metric</a></li>
