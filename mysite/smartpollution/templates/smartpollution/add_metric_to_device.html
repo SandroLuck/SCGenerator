@@ -1,11 +1,17 @@
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-
-<form action="{% url 'smartpollution:add_metric_to_device'%}" method="post">
-{% csrf_token %}
-{% for metric in objs %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ metric.id}}" />
-    <label for="choice{{ forloop.counter }}">{{ metric.physical_property }} in {{metric.unit_of_measurement}}</label><br />
-{% endfor %}
-<input type="submit" value="Vote" />
+<h1>Choose metrics this device captures</h1>
+<h1>{{ pk }}</h1>
+<form action={% url 'smartpollution:add_metric_to_device_save' pk%} method="post">{% csrf_token %}
+    {%if metrics %}
+        {% for met in metrics %}
+              <input type="checkbox" name={{ met.id }} value="True"> {{met.physical_property}} in {{ met.unit_of_measurement }}<br>
+        {% endfor %}
+        <input type="submit" value="Send message" />
+    {% endif %}
 </form>
+<li><a href="{% url 'smartpollution:register_metric' %}">If your metric is not in the list just register a new metric</a></li>
+{#<form action={% url 'smartpollution:add_metric_to_device_save' %} method="post">#}
+{#    {% for met in metrics %}#}
+{#            <input type="radio" name={{ met.id }} value={{ met.id }}> {{ met.physical_property }} in {{ met.unit_of_measurement }}<br>#}
+{#    {% endfor %}#}
+{#    <input type="submit" value="Send message" />#}
+{#</form>#}

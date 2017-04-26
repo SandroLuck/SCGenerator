@@ -1,8 +1,12 @@
 <h1>Choose and existing device or create new one</h1>
 {% if device_name_list %}
     <ul>
-    {% for device in device_name_list %}
-        <li><a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }}</a></li>    {% endfor %}
+        {% for device in device_name_list %}
+            <li><a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }}</a></li>
+            {% for met in device.metrics.all %}
+                Captures: {{ met.physical_property }} in {{ met.unit_of_measurement }}<br/>
+            {% endfor %}
+        {% endfor %}
     </ul>
 {% else %}
     <p>No devices are available.</p>

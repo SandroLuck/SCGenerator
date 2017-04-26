@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.views import generic
-from smartpollution.forms import RegisterDeviceForm, RegisterMetricForm
+from smartpollution.forms import *
 
 from .models import Choice, Question, Device, Metric
 
@@ -29,9 +29,26 @@ class ResultsView(generic.DetailView):
     template_name = 'smartpollution/results.html'
 
 
-def AddMetricToDeviceView (request, pk):
-    context={ pk : 'pk', Metric.objects.all() : 'objs'}
-    return render(request, 'smartpollution/add_metric_to_device.html', context )
+#def AddMetricToDeviceView (request, pk):
+#    context={ 'pk' : pk, 'metrics':Metric.objects.all()}
+#    print("Add metric to device")
+#    return render(request,'smartpollution/add_metric_to_device.html', context)
+
+def AddMetricToDevice(request, pk):
+    template_name = 'smartpollution/add_metric_to_device.html'
+    arguments={}
+    arguments['pk']=pk
+    arguments['metrics']=Metric.objects.all()
+    return render(request, 'smartpollution/add_metric_to_device.html', arguments)
+
+    # dispatch is called when the class instance loads
+    # def dispatch(self, request, *args, **kwargs):
+    #     self.pk = request.GET.get('pk', request.GET.get('pk',''))
+    #     return super(AddMetricToDeviceView, self).dispatch(request, *args, **kwargs)
+    # def form_valid(self, form):
+    #     # This method is called when valid form data has been POSTed.
+    #     # It should return an HttpResponse.
+    #     return super(AddMetricToDeviceView, self).form_valid(form)
 
 
 class RegisterDeviceView(generic.FormView):
@@ -60,6 +77,17 @@ def addDevice(request):
                 device.save()
         return redirect('smartpollution:index')
 
+def saveMetricToDevice(request, pk):
+    if request.POST:
+        for key, value in request.POST.items():
+            if key.isdigit():
+                met=Metric.objects.get(id=key)
+                print(met)
+                dev=Device.objects.get(id=pk)
+                print(dev)
+                dev.metrics.add(met)
+                print(dev.metrics.all())
+    return redirect('smartpollution:index')
 
 def addMetric(request):
     if request.POST:
