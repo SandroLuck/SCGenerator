@@ -1,0 +1,20 @@
+<h1>Create a template for your device</h1>
+<h1>{{ pk }}</h1>
+<form action={% url 'smartpollution:add_template_to_device_save' pk%} method="post">{% csrf_token %}
+    {%if metrics_of_device %}
+        Enter th new templates name:<input type="text" name="template_name"><br>
+        {% for met in metrics_of_device %}
+            <p>{{ met.physical_property }} in {{ met.unit_of_measurement }} lower trigger:<input type="number" name=lower:{{ met.id }} min="-1000000" max="1000000" step="0.001" value="NaN"></p>
+            <p>{{ met.physical_property }} in {{ met.unit_of_measurement }} upper trigger:<input type="number" name=upper:{{ met.id }} min="-1000000" max="1000000" step="0.001" value="NaN"></p>
+            <br>
+        {% endfor %}
+        <input type="submit" value="Send message" />
+    {%else %}
+            <li>Sorry, there are no no metrics assigned to this device. Change it
+                <a href="{% url 'smartpollution:add_metric_to_device' pk%}">here</a>
+            </li>
+    {% endif %}
+<p>Lower trigger: an event is generated if the value is below "lower trigger"</p>
+<p>Upper trigger: an event is generated if the value is above "upper trigger"</p>
+</form>
+<li><a href="{% url 'smartpollution:add_metric_to_device' pk%}">If your metric is not listed add a new metric to the device</a></li>

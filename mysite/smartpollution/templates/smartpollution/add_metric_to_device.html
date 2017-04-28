@@ -1,5 +1,4 @@
 <h1>Choose metrics this device captures</h1>
-<h1>{{ pk }}</h1>
 <form action={% url 'smartpollution:add_metric_to_device_save' pk%} method="post">{% csrf_token %}
     {%if metrics %}
         {% for met in metrics %}
@@ -9,9 +8,3 @@
     {% endif %}
 </form>
 <li><a href="{% url 'smartpollution:register_metric' %}">If your metric is not in the list just register a new metric</a></li>
-{#<form action={% url 'smartpollution:add_metric_to_device_save' %} method="post">#}
-{#    {% for met in metrics %}#}
-{#            <input type="radio" name={{ met.id }} value={{ met.id }}> {{ met.physical_property }} in {{ met.unit_of_measurement }}<br>#}
-{#    {% endfor %}#}
-{#    <input type="submit" value="Send message" />#}
-{#</form>#}

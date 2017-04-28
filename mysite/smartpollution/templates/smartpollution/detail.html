@@ -2,3 +2,4 @@
 <h2>Manufacturing Company:{{ device.manufacturing_company }}</h2>
 
 <li><a href="{% url 'smartpollution:add_metric_to_device' device.id %}">Add a metric this device is capable of recording</a></li>
+<li><a href="{% url 'smartpollution:add_template_to_device' device.id %}">Add a new template to this device</a></li>

@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.views import generic
 from smartpollution.forms import *
 
-from .models import Choice, Question, Device, Metric
+from .models import Choice, Question, Device, Metric, Template, Threshold
 
 
 class IndexView(generic.ListView):
@@ -35,20 +35,16 @@ class ResultsView(generic.DetailView):
 #    return render(request,'smartpollution/add_metric_to_device.html', context)
 
 def AddMetricToDevice(request, pk):
-    template_name = 'smartpollution/add_metric_to_device.html'
     arguments={}
     arguments['pk']=pk
     arguments['metrics']=Metric.objects.all()
     return render(request, 'smartpollution/add_metric_to_device.html', arguments)
 
-    # dispatch is called when the class instance loads
-    # def dispatch(self, request, *args, **kwargs):
-    #     self.pk = request.GET.get('pk', request.GET.get('pk',''))
-    #     return super(AddMetricToDeviceView, self).dispatch(request, *args, **kwargs)
-    # def form_valid(self, form):
-    #     # This method is called when valid form data has been POSTed.
-    #     # It should return an HttpResponse.
-    #     return super(AddMetricToDeviceView, self).form_valid(form)
+def AddTemplateToDevice(request, pk):
+    arguments={}
+    arguments['pk']=pk
+    arguments['metrics_of_device']=Device.objects.get(id=pk).metrics.all()
+    return render(request, 'smartpollution/add_template_to_device.html', arguments)
 
 
 class RegisterDeviceView(generic.FormView):
@@ -87,6 +83,35 @@ def saveMetricToDevice(request, pk):
                 print(dev)
                 dev.metrics.add(met)
                 print(dev.metrics.all())
+    return redirect('smartpollution:index')
+
+def saveTemplateToDevice(request, pk):
+    if request.POST:
+        template = Template(device_id=pk)
+        template.save()
+        for key, value in request.POST.items() :
+            if len(value)>0:
+                print("key is:"+key+"   value is:"+value)
+                if "lower" or "upper "in key:
+                    if Threshold.objects.filter(template_id=pk, metric_id=key.strip("lower:").strip("upper:")).exists():
+                        threshold=Threshold.objects.get(template_id=template.id, metric_id=key.strip("lower:").strip("upper:"))
+                        if "lower:" in key:
+                            threshold.lower_trigger=value
+                        if "upper:" in key:
+                            threshold.upper_trigger=value
+                        threshold.save()
+                    else:
+                        threshold=Threshold(template_id=template.id, metric_id=key.strip("lower:").strip("upper:"))
+                        if "lower:" in key:
+                            threshold.lower_trigger=value
+                        if "upper:" in key:
+                            threshold.upper_trigger=value
+                        threshold.save()
+                if "template_name" in key:
+                    template.template_name=value
+                    template.save()
+                    print("name")
+
     return redirect('smartpollution:index')
 
 def addMetric(request):
