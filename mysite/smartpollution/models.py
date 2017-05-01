@@ -42,14 +42,14 @@ class Device(models.Model):
 
 class Template(models.Model):
     template_name=models.CharField
-    device_id=models.ForeignKey(Device, on_delete=models.CASCADE)
+    device=models.ForeignKey(Device, on_delete=models.CASCADE)
     def __str__(self):
         return self.template_name+", for device:"+Device.objects.get(self.device_id).device_name+" Device_id:"+self.device_id
 
 
 class Threshold(models.Model):
-    template_id=models.ForeignKey(Template, on_delete=models.CASCADE)
-    metric_id=models.ForeignKey(Metric, on_delete=models.CASCADE)
+    template=models.ForeignKey(Template, on_delete=models.CASCADE)
+    metric=models.ForeignKey(Metric, on_delete=models.CASCADE)
     lower_trigger=models.DecimalField( max_digits=19, decimal_places=10)
     upper_trigger=models.DecimalField( max_digits=19, decimal_places=10)
     def __str__(self):

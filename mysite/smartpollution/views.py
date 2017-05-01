@@ -87,13 +87,16 @@ def saveMetricToDevice(request, pk):
 
 def saveTemplateToDevice(request, pk):
     if request.POST:
-        template = Template(device_id=pk)
+        device=Device.objects.get(id=pk)
+
+        template = Template(device=device)
         template.save()
         for key, value in request.POST.items() :
             if len(value)>0:
                 print("key is:"+key+"   value is:"+value)
                 if "lower" or "upper "in key:
-                    if Threshold.objects.filter(template_id=pk, metric_id=key.strip("lower:").strip("upper:")).exists():
+                    metric=Metric.objects.get(id=key.strip("lower:").strip("upper:"))
+                    if Threshold.objects.filter(template=template, metric_id=key.strip("lower:").strip("upper:")).exists():
                         threshold=Threshold.objects.get(template_id=template.id, metric_id=key.strip("lower:").strip("upper:"))
                         if "lower:" in key:
                             threshold.lower_trigger=value
