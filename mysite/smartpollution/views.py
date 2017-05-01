@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.views import generic
 from smartpollution.forms import *
 
-from .models import Choice, Question, Device, Metric, Template, Threshold
+from .models import Device, Metric, Template, Threshold
 
 
 class IndexView(generic.ListView):
@@ -20,19 +20,21 @@ class IndexView(generic.ListView):
         return Device.objects.order_by('-device_name')[:5]
 
 
-class DetailView(generic.DetailView):
-    model = Device
-    template_name = 'smartpollution/detail.html'
+def DetailView(request, pk):
+    arguments={}
+    arguments['pk']=pk
+    arguments['device']=Device.objects.get(id=pk)
+    arguments['templates']=Template.objects.filter(device=Device.objects.get(id=pk))
+    return render(request, 'smartpollution/detail.html', arguments)
 
-class ResultsView(generic.DetailView):
-    model = Question
-    template_name = 'smartpollution/results.html'
+def DetailViewTemplate(request, pk):
+    arguments={}
+    arguments['pk']=pk
+    arguments['device']=Template.objects.get(id=pk).device
 
-
-#def AddMetricToDeviceView (request, pk):
-#    context={ 'pk' : pk, 'metrics':Metric.objects.all()}
-#    print("Add metric to device")
-#    return render(request,'smartpollution/add_metric_to_device.html', context)
+    arguments['template']=Template.objects.get(id=pk)
+    arguments['thresholds']=Threshold.objects.filter(template=Template.objects.filter())
+    return render(request, 'smartpollution/detail_template.html', arguments)
 
 def AddMetricToDevice(request, pk):
     arguments={}
@@ -88,33 +90,35 @@ def saveMetricToDevice(request, pk):
 def saveTemplateToDevice(request, pk):
     if request.POST:
         device=Device.objects.get(id=pk)
-
+        print()
         template = Template(device=device)
-        template.save()
         for key, value in request.POST.items() :
+            print("Round")
+            print("key is:" + key + "   value is:" + value)
             if len(value)>0:
-                print("key is:"+key+"   value is:"+value)
-                if "lower" or "upper "in key:
+                if "lower:" in key or "upper:" in key:
+                    print("Adding key:"+str(key))
                     metric=Metric.objects.get(id=key.strip("lower:").strip("upper:"))
-                    if Threshold.objects.filter(template=template, metric_id=key.strip("lower:").strip("upper:")).exists():
-                        threshold=Threshold.objects.get(template_id=template.id, metric_id=key.strip("lower:").strip("upper:"))
+                    if Threshold.objects.filter(template=template, metric=metric).exists():
+                        threshold=Threshold.objects.get(template=template, metric=metric)
                         if "lower:" in key:
                             threshold.lower_trigger=value
                         if "upper:" in key:
                             threshold.upper_trigger=value
                         threshold.save()
                     else:
-                        threshold=Threshold(template_id=template.id, metric_id=key.strip("lower:").strip("upper:"))
+                        threshold=Threshold(template=template, metric=metric)
                         if "lower:" in key:
                             threshold.lower_trigger=value
                         if "upper:" in key:
                             threshold.upper_trigger=value
                         threshold.save()
                 if "template_name" in key:
+                    print("Adding name")
                     template.template_name=value
                     template.save()
-                    print("name")
-
+                    print("Name tempalet added:"+value)
+            print("For one roudn")
     return redirect('smartpollution:index')
 
 def addMetric(request):
@@ -126,22 +130,3 @@ def addMetric(request):
             metric = Metric(physical_property=physical_p, unit_of_measurement=unit_of_m)
             metric.save()
     return redirect('smartpollution:index')
-
-
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'smartpollution/detail.html', {
-            'question': question,
-            'error_message': "You didn't select a choice.",
-        })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        return HttpResponseRedirect(reverse('smartpollution:results', args=(question.id,)))

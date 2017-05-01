@@ -29,9 +29,9 @@
 </div>
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">{{ device.device_name }} made by {{ device.manufacturing_company }}</h1>
+    <h1 class="w3-margin w3-jumbo">{{ template.template_name }}</h1>
     <a href="{% url 'smartpollution:add_template_to_device' device.id %}" button
-       class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Create a new template </a>
+       class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Create a new template</a>
     <a href="{% url 'smartpollution:add_metric_to_device' device.id %}" button
        class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Add a metric to device</a>
 </header>
@@ -40,7 +40,7 @@
     <div class="w3-content">
         <br class="w3-twothird">
 
-        <h1>Templates:</h1>
+        <h1>For {{ device.device_name }} made by {{ device.manufacturing_company }}</h1>
         <ul class="w3-ul">
             {% for temp in templates %}
                 <li><a href="{% url 'smartpollution:detail_template' temp.id %}">{{ temp.template_name }}<a/></li>
@@ -52,6 +52,19 @@
                 <li>{{ met.physical_property }} in {{ met.unit_of_measurement }}<br/></li>
             {% endfor %}
         </ul>
+        <h1>Has Trigger for:</h1>
+        <ul class="w3-ul">
+            {% for thres in thresholds %}
+                <li>{{ thres.metric.physical_property }} in {{ thres.metric.unit_of_measurement }} :
+                <ul class="w3-ul">
+                    <li>Triggers Below: {{ thres.lower_trigger }}</li>
+                    <li>Triggers Above: {{ thres.upper_trigger }}</li>
+                </ul>
+            </li>
+            {% endfor %}
+
+        </ul>
+
     </div>
     <div class="w3-third w3-center">
     </div>

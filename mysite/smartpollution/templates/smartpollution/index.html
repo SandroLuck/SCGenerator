@@ -1,15 +1,66 @@
-<h1>Choose and existing device or create new one</h1>
-{% if device_name_list %}
-    <ul>
-        {% for device in device_name_list %}
-            <li><a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }}</a></li>
-            {% for met in device.metrics.all %}
-                Captures: {{ met.physical_property }} in {{ met.unit_of_measurement }}<br/>
-            {% endfor %}
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No devices are available.</p>
-{% endif %}
-<li><a href="{% url 'smartpollution:register_device' %}">Register a new device</a></li>
-<li><a href="{% url 'smartpollution:register_metric' %}">Register a new metric</a></li>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    body, h1, h2, h3, h4, h5, h6, a {
+        font-family: "Lato", sans-serif
+    }
+
+    .w3-bar, h1, button {
+        font-family: "Montserrat", sans-serif
+    }
+
+    .fa-anchor, .fa-coffee {
+        font-size: 200px
+    }
+</style>
+<body>
+
+<div class="w3-top">
+    <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
+           href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i
+                class="fa fa-bars"></i></a>
+        <a href="{% url 'smartpollution:index' %}" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Place Holder</a>
+    </div>
+</div>
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">Pollution Monitoring</h1>
+    <a href="{% url 'smartpollution:register_device' %}" button
+       class="w3-button w3-black w3-padding-large w3-large w3-margin-top"> >Register a new device</a>
+</header>
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+        <br class="w3-twothird">
+        <h1>Or choose and existing device</h1>
+        {% if device_name_list %}
+            <ul class="w3-ul">
+
+                {% for device in device_name_list %}
+                    <li>
+                        <a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }} made by {{ device.manufacturing_company }}</a>
+                        <ul class="w3-ul">
+                            {% for met in device.metrics.all %}
+                                <li><a>Captures: {{ met.physical_property }} in {{ met.unit_of_measurement }} </a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+
+        {% else %}
+            <p>No devices are available.</p>
+        {% endif %}
+
+
+    </div>
+    <div class="w3-third w3-center">
+    </div>
+</div>
+</div>
+</body>

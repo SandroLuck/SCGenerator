@@ -1,5 +1,8 @@
 from django.contrib import admin
 
-from .models import Question
+from .models import *
 
-admin.site.register(Question)
+admin.site.register(Device)
+admin.site.register(Metric)
+admin.site.register(Template)
+admin.site.register(Threshold)

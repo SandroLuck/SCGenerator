@@ -1,3 +1,7 @@
+<head>
+<link rel="stylesheet" type="text/css" href="css/forms.css">
+</head>
+<body>
 <h1>Create a template for your device</h1>
 <h1>{{ pk }}</h1>
 <form action={% url 'smartpollution:add_template_to_device_save' pk%} method="post">{% csrf_token %}
@@ -18,3 +22,4 @@
 <p>Upper trigger: an event is generated if the value is above "upper trigger"</p>
 </form>
 <li><a href="{% url 'smartpollution:add_metric_to_device' pk%}">If your metric is not listed add a new metric to the device</a></li>
+</body>
