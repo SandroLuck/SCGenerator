@@ -9,9 +9,12 @@
 
 <div class="w3-top">
     <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
-        <a href="{% url 'smartpollution:index' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Devices</a>
-        <a href="{% url 'smartpollution:index_templates' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Templates</a>
-        <a href="{% url 'smartpollution:about' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+        <a href="{% url 'smartpollution:index' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Devices</a>
+        <a href="{% url 'smartpollution:index_templates' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Templates</a>
+        <a href="{% url 'smartpollution:about' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
     </div>
 </div>
 <!-- Header -->
@@ -25,11 +28,19 @@
     <div class="w3-content">
         <br class="w3-twothird">
         <h1>Or choose and existing device</h1>
-        {% if device_list %}
+        <form action="{% url 'smartpollution:device_search' %}" method="post">
+            {% csrf_token %}
+            <label for="deviceSearch">Search for a device:</label>
+            <input type="search" name="deviceSearch" value="A device you want to find">
+            <input type="submit" button
+       class="w3-button w3-black w3-padding-large w3-large w3-margin-top">
+        </form>
+        {% if device_found %}
             <ul class="w3-ul">
-                {% for device in device_list %}
+                {% for device in device_found %}
                     <li>
-                        <a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }} made by {{ device.manufacturing_company }}</a>
+                        <a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }} made
+                            by {{ device.manufacturing_company }}</a>
                         <ul class="w3-ul">
                             {% for met in device.metrics.all %}
                                 <li><a>Captures: {{ met.physical_property }} in {{ met.unit_of_measurement }} </a></li>
@@ -38,9 +49,27 @@
                     </li>
                 {% endfor %}
             </ul>
-
         {% else %}
-            <p>No devices are available.</p>
+            <p>Showing all devices:</p>
+            {% if device_list %}
+                <ul class="w3-ul">
+                    {% for device in device_list %}
+                        <li>
+                            <a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }} made
+                                by {{ device.manufacturing_company }}</a>
+                            <ul class="w3-ul">
+                                {% for met in device.metrics.all %}
+                                    <li><a>Captures: {{ met.physical_property }} in {{ met.unit_of_measurement }} </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            {% else %}
+                <p>No devices are available.</p>
+            {% endif %}
         {% endif %}
 
 
