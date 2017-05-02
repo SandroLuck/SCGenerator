@@ -1,4 +1,4 @@
-input[type=text] {
+input[type=text], input[type=number]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -8,7 +8,11 @@ input[type=text] {
     box-sizing: border-box;
 }
 
-body, h1, h2, h3, h4, h5, h6, a {
+input[type=submit] {
+    class: "w3-button w3-black w3-padding-large w3-large w3-margin-top"
+}
+
+body, h1, h2, h3, h4, h5, h6, a, label {
     font-family: "Lato", sans-serif
 }
 
@@ -20,3 +24,21 @@ body, h1, h2, h3, h4, h5, h6, a {
     font-size: 200px
 }
 
+input[type=checkbox]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-sizing: border-box;
+    vertical-align: middle;
+
+      /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5); /* IE */
+  -moz-transform: scale(1.5); /* FF */
+  -webkit-transform: scale(1.5); /* Safari and Chrome */
+  -o-transform: scale(1.5); /* Opera */
+  padding: 10px;
+
+}
