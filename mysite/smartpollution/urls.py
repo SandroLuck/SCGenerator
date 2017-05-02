@@ -8,13 +8,13 @@ from . import views
 
 app_name = 'smartpollution'
 urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^$', views.IndexView, name='index'),
+    url(r'^templates', views.IndexTemplateView, name='index_templates'),
+    url(r'^about', views.AboutView, name='about'),
 
-    url(r'^css/form.css$', views.RegisterDeviceView.as_view(), name='css'),
-
-    url(r'^registerdevice/$', views.RegisterDeviceView.as_view(), name='register_device'),
+    url(r'^registerdevice/$', views.RegisterDeviceView, name='register_device'),
     url(r'^registerdevice/add$', views.addDevice, name='register_device_add'),
-    url(r'^registermetric/$', views.RegisterMetricView.as_view(), name='register_metric'),
+    url(r'^registermetric/$', views.RegisterMetricView, name='register_metric'),
     url(r'^registermetric/add$', views.addMetric, name='register_metric_add'),
     url(r'^device/(?P<pk>[0-9]+)/$', views.DetailView, name='detail'),
 

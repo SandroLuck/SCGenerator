@@ -11,14 +11,18 @@ from smartpollution.forms import *
 from .models import Device, Metric, Template, Threshold
 
 
-class IndexView(generic.ListView):
-    template_name = 'smartpollution/index.html'
-    context_object_name = 'device_name_list'
+def IndexView(request):
+    arguments={}
+    arguments['device_list']=Device.objects.all()
+    return render(request, 'smartpollution/index.html', arguments)
 
-    def get_queryset(self):
-        """Return the last five published questions."""
-        return Device.objects.order_by('-device_name')[:5]
+def IndexTemplateView(request):
+    arguments={}
+    arguments['template_list']=Template.objects.all()
+    return render(request, 'smartpollution/index_template.html', arguments)
 
+def AboutView(request):
+    return  render(request, 'smartpollution/about.html')
 
 def DetailView(request, pk):
     arguments={}
@@ -49,21 +53,13 @@ def AddTemplateToDevice(request, pk):
     return render(request, 'smartpollution/add_template_to_device.html', arguments)
 
 
-class RegisterDeviceView(generic.FormView):
-    template_name = 'smartpollution/register_device.html'
-    form_class = RegisterDeviceForm
-    def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        return super(RegisterDeviceView, self).form_valid(form)
+def RegisterDeviceView(request):
+    return render(request, 'smartpollution/register_device.html')
 
-class RegisterMetricView(generic.FormView):
-    template_name = 'smartpollution/register_metric.html'
-    form_class = RegisterMetricForm
-    def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        return super(RegisterDeviceView, self).form_valid(form)
+def RegisterMetricView(request):
+    return render(request, 'smartpollution/register_metric.html')
+
+
 
 def addDevice(request):
         if request.POST:

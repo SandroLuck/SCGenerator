@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -17,24 +16,19 @@
 </div>
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Create a new device</h1>
+    <h1 class="w3-margin w3-jumbo">Pollution Monitoring</h1>
+    <a href="{% url 'smartpollution:register_device' %}" button
+       class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Register a new device</a>
 </header>
 
 <div class="w3-row-padding w3-padding-64 w3-container">
     <div class="w3-content">
         <br class="w3-twothird">
-        <form action={% url 'smartpollution:register_device_add' %} method="post">{% csrf_token %}
-            <label for="device_name">Official device name:</label>
-            <input type="text" id="device_name" name="device_name"><br>
-            <label for="manufacturing_company">Manufacturing company:</label>
-            <input type="text" id="manufacturing_company" name="manufacturing_company"><br>
-            <input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit"
-                   value="Send message"/>
-        </form>
+        <h1>Who are we</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
     </div>
     <div class="w3-third w3-center">
     </div>
 </div>
 </div>
 </body>
-

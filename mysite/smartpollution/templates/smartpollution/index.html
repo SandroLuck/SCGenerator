@@ -9,11 +9,9 @@
 
 <div class="w3-top">
     <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
-        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red"
-           href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i
-                class="fa fa-bars"></i></a>
-        <a href="{% url 'smartpollution:index' %}" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
-        <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Place Holder</a>
+        <a href="{% url 'smartpollution:index' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Devices</a>
+        <a href="{% url 'smartpollution:index_templates' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Templates</a>
+        <a href="{% url 'smartpollution:about' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
     </div>
 </div>
 <!-- Header -->
@@ -27,10 +25,9 @@
     <div class="w3-content">
         <br class="w3-twothird">
         <h1>Or choose and existing device</h1>
-        {% if device_name_list %}
+        {% if device_list %}
             <ul class="w3-ul">
-
-                {% for device in device_name_list %}
+                {% for device in device_list %}
                     <li>
                         <a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }} made by {{ device.manufacturing_company }}</a>
                         <ul class="w3-ul">
