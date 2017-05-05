@@ -5,25 +5,27 @@ from . import views
 from django.conf.urls import url
 
 from . import views
-
+from . import downloads
+from . import db_manipulation
 app_name = 'smartpollution'
 urlpatterns = [
-    url(r'^$', views.IndexView, name='index'),
-    url(r'^templates', views.IndexTemplateView, name='index_templates'),
-    url(r'^about', views.AboutView, name='about'),
-    url(r'^devices', views.DeviceSearchView, name='device_search'),
+    url(r'^$', views.index_view, name='index'),
+    url(r'^templates', views.index_template_view, name='index_templates'),
+    url(r'^about', views.about_view, name='about'),
+    url(r'^devices', views.device_search_view, name='device_search'),
 
-    url(r'^registerdevice/$', views.RegisterDeviceView, name='register_device'),
-    url(r'^registerdevice/add$', views.addDevice, name='register_device_add'),
-    url(r'^registermetric/$', views.RegisterMetricView, name='register_metric'),
-    url(r'^registermetric/add$', views.addMetric, name='register_metric_add'),
-    url(r'^device/(?P<pk>[0-9]+)/$', views.DetailView, name='detail'),
+    url(r'^registerdevice/$', views.register_device_view, name='register_device'),
+    url(r'^registerdevice/add$', db_manipulation.add_device, name='register_device_add'),
+    url(r'^registermetric/$', views.register_metric_view, name='register_metric'),
+    url(r'^registermetric/add$', db_manipulation.add_metric, name='register_metric_add'),
+    url(r'^device/(?P<pk>[0-9]+)/$', views.detail_view, name='detail'),
 
-    url(r'^template/(?P<pk>[0-9]+)/$', views.DetailTemplateView, name='detail_template'),
+    url(r'^template/(?P<pk>[0-9]+)/$', views.detail_template_view, name='detail_template'),
+    url(r'^template/(?P<pk>[0-9]+)/download$', downloads.send_smart_contract, name='download_smartcontract'),
 
-    url(r'^device/(?P<pk>[0-9]+)/addMetric/$', views.AddMetricToDevice, name='add_metric_to_device'),
-    url(r'^device/(?P<pk>[0-9]+)/addMetricSave/$', views.saveMetricToDevice, name='add_metric_to_device_save'),
+    url(r'^device/(?P<pk>[0-9]+)/add_metric/$', db_manipulation.add_metric_to_device, name='add_metric_to_device'),
+    url(r'^device/(?P<pk>[0-9]+)/addMetricSave/$', db_manipulation.save_metric_to_device, name='add_metric_to_device_save'),
 
-    url(r'^device/(?P<pk>[0-9]+)/addTemplate/$', views.AddTemplateToDevice, name='add_template_to_device'),
-    url(r'^device/(?P<pk>[0-9]+)/addTemplateSave/$', views.saveTemplateToDevice, name='add_template_to_device_save'),
+    url(r'^device/(?P<pk>[0-9]+)/addTemplate/$', db_manipulation.add_template_to_device, name='add_template_to_device'),
+    url(r'^device/(?P<pk>[0-9]+)/addTemplateSave/$', db_manipulation.save_template_to_device, name='add_template_to_device_save'),
 ]

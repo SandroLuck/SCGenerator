@@ -9,14 +9,14 @@
 <body>
 
 <div class="w3-top">
-    <div class="w3-bar w3-red w3-card-2 w3-left-align w3-large">
+    <div class="w3-bar w3-blue w3-card-2 w3-left-align w3-large">
         <a href="{% url 'smartpollution:index' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Devices</a>
         <a href="{% url 'smartpollution:index_templates' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Templates</a>
         <a href="{% url 'smartpollution:about' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
     </div>
 </div>
 <!-- Header -->
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
     <h1 class="w3-margin w3-jumbo">{{ device.device_name }} made by {{ device.manufacturing_company }}</h1>
     <a href="{% url 'smartpollution:add_template_to_device' device.id %}" button
        class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Create a new template </a>
