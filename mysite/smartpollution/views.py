@@ -24,7 +24,8 @@ def index_view(request):
         arguments['device_list'] = Device.objects.all()
         return render(request, 'smartpollution/index.html', arguments)
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def index_template_view(request):
@@ -38,7 +39,8 @@ def index_template_view(request):
         arguments['template_list'] = Template.objects.all()
         return render(request, 'smartpollution/index_template.html', arguments)
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def device_search_view(request):
@@ -56,7 +58,8 @@ def device_search_view(request):
                     arguments['device_found'] = Device.objects.filter(Q(device_name__icontains=value)| Q(manufacturing_company__icontains=value))
         return render(request, 'smartpollution/index.html', arguments)
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def about_view(request):
@@ -68,7 +71,8 @@ def about_view(request):
     try:
         return render(request, 'smartpollution/about.html')
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def detail_view(request, pk):
@@ -85,7 +89,8 @@ def detail_view(request, pk):
         arguments['templates'] = Template.objects.filter(device=Device.objects.get(id=pk))
         return render(request, 'smartpollution/detail.html', arguments)
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def detail_template_view(request, pk):
@@ -103,7 +108,8 @@ def detail_template_view(request, pk):
         arguments['thresholds'] = Threshold.objects.filter(template=Template.objects.get(id=pk))
         return render(request, 'smartpollution/detail_template.html', arguments)
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def register_device_view(request):
@@ -115,7 +121,7 @@ def register_device_view(request):
     try:
         return render(request, 'smartpollution/register_device.html')
     except:
-        pass
+        return return_problem_page(request)
 
 
 def register_metric_view(request):
@@ -127,4 +133,7 @@ def register_metric_view(request):
     try:
         return render(request, 'smartpollution/register_metric.html')
     except:
-        pass
+        return return_problem_page(request)
+
+def return_problem_page(request):
+    return render(request,'smartpollution/problem.html')

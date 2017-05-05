@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.shortcuts import get_object_or_404, render
 from smartpollution.forms import *
 from .models import Device, Metric, Template, Threshold
+from .views import return_problem_page
 
 
 def add_metric_to_device(request, pk):
@@ -17,7 +18,8 @@ def add_metric_to_device(request, pk):
         arguments['metrics'] = Metric.objects.all()
         return render(request, 'smartpollution/add_metric_to_device.html', arguments)
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def add_template_to_device(request, pk):
@@ -33,7 +35,8 @@ def add_template_to_device(request, pk):
         arguments['metrics_of_device'] = Device.objects.get(id=pk).metrics.all()
         return render(request, 'smartpollution/add_template_to_device.html', arguments)
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def add_device(request):
@@ -52,7 +55,8 @@ def add_device(request):
                 device.save()
         return redirect('smartpollution:index')
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def save_metric_to_device(request, pk):
@@ -71,7 +75,8 @@ def save_metric_to_device(request, pk):
                     dev.metrics.add(met)
         return redirect('smartpollution:index')
     except:
-        pass
+        return return_problem_page(request)
+
 
 def save_template_to_device(request, pk):
     """
@@ -107,7 +112,8 @@ def save_template_to_device(request, pk):
                         template.save()
         return redirect('smartpollution:index')
     except:
-        pass
+        return return_problem_page(request)
+
 
 
 def add_metric(request):
@@ -126,4 +132,4 @@ def add_metric(request):
                 metric.save()
         return redirect('smartpollution:index')
     except:
-        pass
+        return return_problem_page(request)

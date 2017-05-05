@@ -28,4 +28,9 @@ urlpatterns = [
 
     url(r'^device/(?P<pk>[0-9]+)/addTemplate/$', db_manipulation.add_template_to_device, name='add_template_to_device'),
     url(r'^device/(?P<pk>[0-9]+)/addTemplateSave/$', db_manipulation.save_template_to_device, name='add_template_to_device_save'),
+
+    url(r'^problem$', views.return_problem_page,
+        name='problem'),
+    url(r'.*', views.return_problem_page,
+        name='do_not_use_this_only_for_error_handling'),
 ]
