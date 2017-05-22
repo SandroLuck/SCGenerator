@@ -9,7 +9,9 @@ input[type=text], input[type=number], input[type=search]{
 }
 
 input[type=submit] {
+    width: 20%;
     class: "w3-button w3-black w3-padding-large w3-large w3-margin-top"
+
 }
 
 body, h1, h2, h3, h4, h5, h6, a, label {
@@ -26,15 +28,11 @@ body, h1, h2, h3, h4, h5, h6, a, label {
 }
 
 input[type=checkbox]{
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
     border: 1px solid #ccc;
     border-radius: 2px;
     box-sizing: border-box;
-    vertical-align: middle;
-
+    vertical-align: top;
+    width: 100%;
       /* Double-sized Checkboxes */
   -ms-transform: scale(1.5); /* IE */
   -moz-transform: scale(1.5); /* FF */
@@ -42,4 +40,10 @@ input[type=checkbox]{
   -o-transform: scale(1.5); /* Opera */
   padding: 10px;
 
+}
+label{
+    border-radius: 2px;
+    box-sizing: border-box;
+    vertical-align: top;
+    padding: 10px;
 }

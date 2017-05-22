@@ -7,6 +7,7 @@ from django.conf.urls import url
 from . import views
 from . import downloads
 from . import db_manipulation
+
 app_name = 'smartpollution'
 urlpatterns = [
     url(r'^$', views.index_view, name='index'),
@@ -24,10 +25,12 @@ urlpatterns = [
     url(r'^template/(?P<pk>[0-9]+)/download$', downloads.send_smart_contract, name='download_smartcontract'),
 
     url(r'^device/(?P<pk>[0-9]+)/add_metric/$', db_manipulation.add_metric_to_device, name='add_metric_to_device'),
-    url(r'^device/(?P<pk>[0-9]+)/addMetricSave/$', db_manipulation.save_metric_to_device, name='add_metric_to_device_save'),
+    url(r'^device/(?P<pk>[0-9]+)/addMetricSave/$', db_manipulation.save_metric_to_device,
+        name='add_metric_to_device_save'),
 
     url(r'^device/(?P<pk>[0-9]+)/addTemplate/$', db_manipulation.add_template_to_device, name='add_template_to_device'),
-    url(r'^device/(?P<pk>[0-9]+)/addTemplateSave/$', db_manipulation.save_template_to_device, name='add_template_to_device_save'),
+    url(r'^device/(?P<pk>[0-9]+)/addTemplateSave/$', db_manipulation.save_template_to_device,
+        name='add_template_to_device_save'),
 
     url(r'^problem$', views.return_problem_page,
         name='problem'),

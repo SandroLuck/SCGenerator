@@ -1,0 +1,16 @@
+LOG:  Datenbanksystem wurde am 2017-05-05 11:31:49 CEST heruntergefahren
+LOG:  MultiXact-Member-Wraparound-Schutz ist jetzt aktiviert
+LOG:  Datenbanksystem ist bereit, um Verbindungen anzunehmen
+LOG:  Autovacuum-Launcher startet
+FATAL:  Rolle »admin« existiert nicht
+FATAL:  Rolle »postgres« existiert nicht
+FATAL:  Rolle »postgres« existiert nicht
+FATAL:  Datenbank »sandr« existiert nicht
+FATAL:  Datenbank »\du« existiert nicht
+FATAL:  Datenbank »sandr« existiert nicht
+FEHLER:  storniere Anfrage wegen Benutzeraufforderung
+LOG:  schnelles Herunterfahren verlangt
+LOG:  etwaige aktive Transaktionen werden abgebrochen
+LOG:  Autovacuum-Launcher fährt herunter
+LOG:  fahre herunter
+LOG:  Datenbanksystem ist heruntergefahren

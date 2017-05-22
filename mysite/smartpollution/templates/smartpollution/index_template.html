@@ -30,6 +30,8 @@
                 {% for template in template_list %}
                     <li>
                         <a href="{% url 'smartpollution:detail_template' template.id %}">{{ template.template_name }}</a>
+                        <a> for the device </a>
+                        <a href="{% url 'smartpollution:detail' template.device.id%}">{{ template.device }}</a>
                     </li>
                 {% endfor %}
             </ul>

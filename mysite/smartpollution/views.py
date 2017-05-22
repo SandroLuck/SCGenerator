@@ -8,9 +8,10 @@ from django.urls import reverse
 from django.views import generic
 from smartpollution.forms import *
 from django.db.models import Q
-
+from .generate_smartcontract import create_new_smart_contract
 
 from .models import Device, Metric, Template, Threshold
+import os
 
 
 def index_view(request):

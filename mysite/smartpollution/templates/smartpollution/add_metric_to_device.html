@@ -10,9 +10,12 @@
 
 <div class="w3-top">
     <div class="w3-bar w3-blue w3-card-2 w3-left-align w3-large">
-        <a href="{% url 'smartpollution:index' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Devices</a>
-        <a href="{% url 'smartpollution:index_templates' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Templates</a>
-        <a href="{% url 'smartpollution:about' %}" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+        <a href="{% url 'smartpollution:index' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Devices</a>
+        <a href="{% url 'smartpollution:index_templates' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Templates</a>
+        <a href="{% url 'smartpollution:about' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
     </div>
 </div>
 <!-- Header -->
@@ -29,9 +32,11 @@
             {% if metrics %}
 
                 {% for met in metrics %}
-                    <label for={{ met.id }}>{{ met.physical_property }} in
-                    {{ met.unit_of_measurement }}:</label>
-                    <input type="checkbox" name={{ met.id }} value="True">
+                    <div>
+                        <label for={{ met.id }}>{{ met.physical_property }} in
+                            {{ met.unit_of_measurement }}:</label>
+                        <input type="checkbox" name={{ met.id }} value="True">
+                    </div>
                 {% endfor %}
             {% endif %}
             <input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit"
