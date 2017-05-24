@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.shortcuts import get_object_or_404, render
 from smartpollution.forms import *
-from .models import Device, Metric, Template, Threshold
+from .models import Device, Metric, Template, Threshold, Contract
 from .views import return_problem_page
 
 
@@ -49,11 +49,30 @@ def add_device(request):
         if request.POST:
             form = RegisterDeviceForm(request.POST)
             if form.is_valid():
+                physical_p = form.cleaned_data['physical_property']
+                unit_of_m = form.cleaned_data['unit_of_measurement']
+
                 device_n = form.cleaned_data['device_name']
                 manufacturing_c = form.cleaned_data['manufacturing_company']
                 device = Device(manufacturing_company=manufacturing_c, device_name=device_n)
                 device.save()
         return redirect('smartpollution:index')
+    except:
+        return return_problem_page(request)
+
+def add_contract(request):
+    try:
+        print("add contract")
+        if request.POST:
+            form = RegisterContractForm(request.POST)
+            if form.is_valid():
+                contract_name= form.cleaned_data['contract_name']
+                contract_address=form.cleaned_data['contract_address']
+                contract_abi=form.cleaned_data['contract_abi']
+                contract = Contract(contract_name=contract_name, contract_address=contract_address, contract_abi=contract_abi)
+                print(contract_name, contract_address, contract_abi)
+                contract.save()
+        return redirect('smartpollution:contract_monitor')
     except:
         return return_problem_page(request)
 

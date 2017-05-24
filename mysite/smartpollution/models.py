@@ -36,3 +36,10 @@ class Threshold(models.Model):
     upper_trigger=models.DecimalField( max_digits=19, decimal_places=10, blank=True, null=True)
     def __str__(self):
         return str(self.id)
+
+class Contract(models.Model):
+    contract_name=models.CharField(max_length=200, null=True)
+    contract_address=models.CharField(max_length=42, null=True)#42 since a contract address with 0x is len(add)=42 e.g. 0x3B03c46Dfc878FeF9fAe8de4E32a6718f2E250e9
+    contract_abi=models.CharField(max_length=2000,null=True)
+    def __str__(self):
+        return str(self.contract_name)

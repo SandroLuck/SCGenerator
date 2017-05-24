@@ -10,7 +10,7 @@ from smartpollution.forms import *
 from django.db.models import Q
 from .generate_smartcontract import create_new_smart_contract
 
-from .models import Device, Metric, Template, Threshold
+from .models import Device, Metric, Template, Threshold, Contract
 import os
 
 
@@ -136,5 +136,30 @@ def register_metric_view(request):
     except:
         return return_problem_page(request)
 
+def register_contract_view(request):
+    """
+    return the input form for a metric registration
+    :param request: 
+    :return: 
+    """
+    try:
+        return render(request, 'smartpollution/register_contract.html')
+    except:
+        return return_problem_page(request)
+
+
+def contract_monitor(request):
+    try:
+        arguments = {}
+        arguments['contracts'] = Contract.objects.all()
+        return render(request, 'smartpollution/contracts.html', arguments)
+    except:
+        return return_problem_page(request)
+
 def return_problem_page(request):
+    """
+    This handels all problems and displays the problem page
+    :param request: 
+    :return: 
+    """
     return render(request,'smartpollution/problem.html')

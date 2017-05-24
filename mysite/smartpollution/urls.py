@@ -25,15 +25,15 @@ urlpatterns = [
     url(r'^template/(?P<pk>[0-9]+)/download$', downloads.send_smart_contract, name='download_smartcontract'),
 
     url(r'^device/(?P<pk>[0-9]+)/add_metric/$', db_manipulation.add_metric_to_device, name='add_metric_to_device'),
-    url(r'^device/(?P<pk>[0-9]+)/addMetricSave/$', db_manipulation.save_metric_to_device,
-        name='add_metric_to_device_save'),
+    url(r'^device/(?P<pk>[0-9]+)/addMetricSave/$', db_manipulation.save_metric_to_device,name='add_metric_to_device_save'),
 
     url(r'^device/(?P<pk>[0-9]+)/addTemplate/$', db_manipulation.add_template_to_device, name='add_template_to_device'),
-    url(r'^device/(?P<pk>[0-9]+)/addTemplateSave/$', db_manipulation.save_template_to_device,
-        name='add_template_to_device_save'),
+    url(r'^device/(?P<pk>[0-9]+)/addTemplateSave/$', db_manipulation.save_template_to_device,name='add_template_to_device_save'),
 
-    url(r'^problem$', views.return_problem_page,
-        name='problem'),
-    url(r'.*', views.return_problem_page,
-        name='do_not_use_this_only_for_error_handling'),
+    url(r'^cotracts$', views.contract_monitor,name='contract_monitor'),
+    url(r'^registercontract/$', views.register_contract_view, name='register_contract'),
+    url(r'^registercontract/add$', db_manipulation.add_contract, name='register_contract_add'),
+
+    url(r'^problem$', views.return_problem_page,name='problem'),
+    url(r'.*', views.return_problem_page,name='do_not_use_this_only_for_error_handling'),
 ]

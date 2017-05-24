@@ -28,7 +28,7 @@ def send_smart_contract(request, pk):
             test_file = FileWrapper(open(path, 'rb'))
 
             response = HttpResponse(test_file ,content_type='text/plain')
-            response['Content-Disposition'] = r'attachment; filename=PollutionMonitoringContract.sol'
+            response['Content-Disposition'] = r'attachment; filename=MyPollutionMonitoringContract.sol'
             os.remove(path)
         return response
     except:

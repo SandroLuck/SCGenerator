@@ -14,3 +14,8 @@ class AddMetricsToDeviceForm(forms.Form):
     for metric in Metric.objects.all():
         all_metrics.append((metric.id, metric.physical_property+' in '+metric.unit_of_measurement ))
     Metrics=forms.MultipleChoiceField(choices=all_metrics, widget=forms.CheckboxSelectMultiple)
+
+class RegisterContractForm(forms.Form):
+    contract_name = forms.CharField()
+    contract_address = forms.CharField()
+    contract_abi = forms.CharField()
