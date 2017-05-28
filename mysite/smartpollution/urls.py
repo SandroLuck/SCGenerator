@@ -31,6 +31,8 @@ urlpatterns = [
     url(r'^device/(?P<pk>[0-9]+)/addTemplateSave/$', db_manipulation.save_template_to_device,name='add_template_to_device_save'),
 
     url(r'^cotracts$', views.contract_monitor,name='contract_monitor'),
+    url(r'^contracts/(?P<pk>[0-9]+)/$', views.detail_contract_view, name='detail_contract'),
+
     url(r'^registercontract/$', views.register_contract_view, name='register_contract'),
     url(r'^registercontract/add$', db_manipulation.add_contract, name='register_contract_add'),
 

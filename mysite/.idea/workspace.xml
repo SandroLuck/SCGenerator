@@ -27,30 +27,18 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smartpollution/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="34" column="63" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="63" />
-              <folding>
-                <element signature="e#0#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smartpollution/tests.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-114">
+              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_manipulation.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smartpollution/db_manipulation.py">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smartpollution/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="66" column="53" lean-forward="false" selection-start-line="66" selection-start-column="53" selection-end-line="66" selection-end-column="53" />
+            <state relative-caret-position="515">
+              <caret line="128" column="104" lean-forward="false" selection-start-line="128" selection-start-column="104" selection-end-line="128" selection-end-column="104" />
               <folding>
                 <element signature="e#0#64#0" expanded="true" />
               </folding>
@@ -58,11 +46,33 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="read_eth_chain.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="detail_contract.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/detail_contract.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="362">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smartpollution/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="read_eth_chain.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/smartpollution/read_eth_chain.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="84" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="84" />
+            <state relative-caret-position="170">
+              <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -78,21 +88,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_template_to_device.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/add_template_to_device.html">
+      <file leaf-file-name="contracts.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/contracts.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="34" lean-forward="false" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+            <state relative-caret-position="623">
+              <caret line="50" column="45" lean-forward="false" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="contracts.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/contracts.html">
+      <file leaf-file-name="index_template.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/index_template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+            <state relative-caret-position="-119">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -101,8 +111,8 @@
       <file leaf-file-name="detail_template.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/detail_template.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="185">
-              <caret line="41" column="76" lean-forward="false" selection-start-line="41" selection-start-column="74" selection-end-line="41" selection-end-column="76" />
+            <state relative-caret-position="494">
+              <caret line="48" column="24" lean-forward="true" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -111,21 +121,9 @@
       <file leaf-file-name="ChainReader.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/ChainReader.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="306">
               <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="30" selection-end-column="62" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery-3.1.1.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/smartpollution/static/smartpollution/jquery-3.1.1.min.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="22603" lean-forward="false" selection-start-line="3" selection-start-column="22603" selection-end-line="3" selection-end-column="22603" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -136,9 +134,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Python Script" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -193,16 +191,18 @@
         <option value="$PROJECT_DIR$/smartpollution/templates/smartpollution/register_device.html" />
         <option value="$PROJECT_DIR$/smartpollution/templates/smartpollution/register_metric.html" />
         <option value="$PROJECT_DIR$/smartpollution/models.py" />
-        <option value="$PROJECT_DIR$/smartpollution/urls.py" />
-        <option value="$PROJECT_DIR$/smartpollution/views.py" />
         <option value="$PROJECT_DIR$/smartpollution/admin.py" />
         <option value="$PROJECT_DIR$/smartpollution/templates/smartpollution/register_contract.html" />
         <option value="$PROJECT_DIR$/smartpollution/db_manipulation.py" />
         <option value="$PROJECT_DIR$/smartpollution/forms.py" />
-        <option value="$PROJECT_DIR$/smartpollution/read_eth_chain.py" />
         <option value="$PROJECT_DIR$/smartpollution/templates/smartpollution/jquery-3.1.1.min.js" />
         <option value="$PROJECT_DIR$/smartpollution/templates/smartpollution/ChainReader.html" />
+        <option value="$PROJECT_DIR$/smartpollution/urls.py" />
+        <option value="$PROJECT_DIR$/smartpollution/templates/detail_contract.html" />
         <option value="$PROJECT_DIR$/smartpollution/templates/smartpollution/contracts.html" />
+        <option value="$PROJECT_DIR$/smartpollution/templates/smartpollution/detail_contract.html" />
+        <option value="$PROJECT_DIR$/smartpollution/views.py" />
+        <option value="$PROJECT_DIR$/smartpollution/read_eth_chain.py" />
       </list>
     </option>
   </component>
@@ -372,15 +372,15 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sandr\Desktop\WebStart\mysite\smartpollution\static\smartpollution" />
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\sandr\Desktop\WebStart\mysite\smartpollution\templates\smartpollution" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sandr\Desktop\WebStart\mysite\smartpollution\templates\smartpollution" />
+      <recent name="C:\Users\sandr\Desktop\WebStart\mysite\smartpollution\static\smartpollution" />
       <recent name="C:\Users\sandr\Desktop\WebStart\mysite\smartpollution" />
       <recent name="C:\Users\sandr\Desktop\WebStart\mysite" />
       <recent name="A:\WebStart\mysite\smartpollution\static\smartpollution" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sandr\Desktop\WebStart\mysite\smartpollution\templates\smartpollution" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -605,8 +605,8 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DJANGO_SETTINGS_MODULE" value="mysite.settings" />
+        <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="C:\Users\sandr\AppData\Local\Programs\Python\Python36\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -667,18 +667,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18443497" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18656716" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3312369" sideWeight="0.51859957" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6697819" sideWeight="0.4961915" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33852544" sideWeight="0.48140043" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5430945" sideWeight="0.4961915" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33852544" sideWeight="0.48140043" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7725857" sideWeight="0.6823028" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3665628" sideWeight="0.6823028" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914045" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3281412" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -731,14 +732,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mysite/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="19" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/smartpollution/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -860,13 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/index_template.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="54" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/problem.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -885,13 +871,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="83" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/smartpollution/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -959,16 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smartpollution/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="153" column="55" lean-forward="false" selection-start-line="153" selection-start-column="55" selection-end-line="153" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/smartpollution/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -982,16 +951,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/smartpollution/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="34" column="63" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1031,34 +990,78 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smartpollution/read_eth_chain.py">
+    <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/ChainReader.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="84" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="84" />
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="30" selection-end-column="62" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/ChainReader.html">
+    <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/index_template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="30" selection-end-column="62" />
+        <state relative-caret-position="-119">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smartpollution/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-114">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/detail_template.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="41" column="76" lean-forward="false" selection-start-line="41" selection-start-column="74" selection-end-line="41" selection-end-column="76" />
+        <state relative-caret-position="494">
+          <caret line="48" column="24" lean-forward="true" selection-start-line="48" selection-start-column="24" selection-end-line="48" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smartpollution/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="41" column="20" lean-forward="false" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/contracts.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="46" column="28" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+        <state relative-caret-position="623">
+          <caret line="50" column="45" lean-forward="false" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smartpollution/templates/smartpollution/detail_contract.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smartpollution/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="128" column="104" lean-forward="false" selection-start-line="128" selection-start-column="104" selection-end-line="128" selection-end-column="104" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/smartpollution/read_eth_chain.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="21" lean-forward="true" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
           <folding />
         </state>
       </provider>

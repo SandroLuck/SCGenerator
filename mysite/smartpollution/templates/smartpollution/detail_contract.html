@@ -1,0 +1,44 @@
+<html>
+<title>{{ template.template_name }}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{% load static %}
+<link rel="stylesheet" href="{% static 'smartpollution/w3.css' %}">
+<link rel="stylesheet" href="{% static 'smartpollution/forms.css' %}">
+
+<body>
+
+<div class="w3-top">
+    <div class="w3-bar w3-blue w3-card-2 w3-left-align w3-large">
+        <a href="{% url 'smartpollution:index' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Devices</a>
+        <a href="{% url 'smartpollution:index_templates' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Templates</a>
+        <a href="{% url 'smartpollution:contract_monitor' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contract monitor</a>
+
+        <a href="{% url 'smartpollution:about' %}"
+           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+    </div>
+</div>
+<!-- Header -->
+<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-jumbo">{{ contract.contract_name }}</h1>
+</header>
+
+<div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+        <br class="w3-twothird">
+
+        <h1>Contract {{ contract.contract_name }}</h1>
+        <li>Contract address: {{ contract.contract_address }}</li>
+        <li>Contract abi: {{ contract.contract_abi }}</li>
+        <li>Contract info: {{ info }}</li>
+
+
+    </div>
+    <div class="w3-third w3-center">
+    </div>
+</div>
+</div>
+</body>

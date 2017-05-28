@@ -56,6 +56,7 @@
                     document.getElementById({{ contract.id }}).innerHTML = cont.metric();
                 </script>
             </ul>
+            <a href="{% url 'smartpollution:detail_contract' contract.id %}">Look up details</a>
             <br>
         {% endfor %}
 

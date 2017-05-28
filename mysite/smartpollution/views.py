@@ -8,9 +8,12 @@ from django.urls import reverse
 from django.views import generic
 from smartpollution.forms import *
 from django.db.models import Q
+
+from smartpollution.read_eth_chain import get_contract_info
 from .generate_smartcontract import create_new_smart_contract
 
 from .models import Device, Metric, Template, Threshold, Contract
+
 import os
 
 
@@ -111,6 +114,24 @@ def detail_template_view(request, pk):
     except:
         return return_problem_page(request)
 
+def detail_contract_view(request, pk):
+    """
+    returns the detail view of a contract
+    :param request: 
+    :param pk: the pk of a contract to display
+    :return: the details of a contract
+    """
+    try:
+        print("Start cotnract detail")
+        arguments = {}
+        contract=Contract.objects.get(id=pk)
+        arguments['contract'] = contract
+        arguments['info']=get_contract_info(abi=contract.contract_abi, address=contract.contract_address)
+
+        return render(request, 'smartpollution/detail_contract.html', arguments)
+    except Exception as e:
+        print(str(e))
+        return return_problem_page(request)
 
 
 def register_device_view(request):
