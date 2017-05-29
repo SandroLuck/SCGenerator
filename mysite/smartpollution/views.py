@@ -41,7 +41,7 @@ def index_template_view(request):
     try:
         arguments = {}
         arguments['template_list'] = Template.objects.all()
-        return render(request, 'smartpollution/index_template.html', arguments)
+        return render(request, 'smartpollution/indextemplate.html', arguments)
     except:
         return return_problem_page(request)
 
@@ -110,7 +110,7 @@ def detail_template_view(request, pk):
         arguments['device'] = Template.objects.get(id=pk).device
         arguments['template'] = Template.objects.get(id=pk)
         arguments['thresholds'] = Threshold.objects.filter(template=Template.objects.get(id=pk))
-        return render(request, 'smartpollution/detail_template.html', arguments)
+        return render(request, 'smartpollution/detailtemplate.html', arguments)
     except:
         return return_problem_page(request)
 
@@ -128,7 +128,7 @@ def detail_contract_view(request, pk):
         arguments['contract'] = contract
         arguments['info']=get_contract_info(abi=contract.contract_abi, address=contract.contract_address)
 
-        return render(request, 'smartpollution/detail_contract.html', arguments)
+        return render(request, 'smartpollution/detailcontract.html', arguments)
     except Exception as e:
         print(str(e))
         return return_problem_page(request)
@@ -141,7 +141,7 @@ def register_device_view(request):
     :return: 
     """
     try:
-        return render(request, 'smartpollution/register_device.html')
+        return render(request, 'smartpollution/registerdevice.html')
     except:
         return return_problem_page(request)
 
@@ -153,7 +153,7 @@ def register_metric_view(request):
     :return: 
     """
     try:
-        return render(request, 'smartpollution/register_metric.html')
+        return render(request, 'smartpollution/registermetric.html')
     except:
         return return_problem_page(request)
 
@@ -164,7 +164,7 @@ def register_contract_view(request):
     :return: 
     """
     try:
-        return render(request, 'smartpollution/register_contract.html')
+        return render(request, 'smartpollution/registercontract.html')
     except:
         return return_problem_page(request)
 

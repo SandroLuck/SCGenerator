@@ -20,7 +20,7 @@ contract @ContractName@ is owned {
   UpperTrigger upperTrigger = UpperTrigger(@UpperTrigger@);
     struct Metric{
         string name;   // name of the metric
-        int32 value; // this value is the
+        int@Int@ value; // this value is the
     }
     struct LowerTrigger{
       int32 value;

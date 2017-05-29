@@ -1,70 +1,227 @@
-<html>
-<title>Devices</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-{% load static %}
-<link rel="stylesheet" href="{% static 'smartpollution/w3.css' %}">
-<link rel="stylesheet" href="{% static 'smartpollution/forms.css' %}">
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'smartpollution/w3.css' %}">
+    <title>Mountain King - Bootstrap Template</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/theme.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'smartpollution/style.css' %}" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:300,700,900,500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/typicons/2.0.8/typicons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/pushy.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/masonry.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/odometer-theme-default.css' %}">
+    <script>
+        window.odometerOptions = {
+            selector: '.odometer',
+            format: '(,ddd)', // Change how digit groups are formatted, and how many digits are shown after the decimal point
+            duration: 13000, // Change how long the javascript expects the CSS animation to take
+            theme: 'default'
+        };
+    </script>
+</head>
+<body class="">
+<!-- Pushy Menu -->
+<nav class="pushy pushy-left">
+    <ul class="list-unstyled">
+        <li><a href="{% url 'smartpollution:index' %}">Devices</a></li>
+        <li><a href="{% url 'smartpollution:index_templates' %}">Templates</a></li>
+        <li><a href="{% url 'smartpollution:contract_monitor' %}">Contract Monitor</a></li>
+        <li><a href="{% url 'smartpollution:about' %}">About</a></li>
+    </ul>
+</nav>
+<!-- Site Overlay -->
+<div class="site-overlay"></div>
 
-<div class="w3-top">
-    <div class="w3-bar w3-blue w3-card-2 w3-left-align w3-large">
-        <a href="{% url 'smartpollution:index' %}"
-           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Devices</a>
-        <a href="{% url 'smartpollution:index_templates' %}"
-           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Templates</a>
-        <a href="{% url 'smartpollution:contract_monitor' %}"
-           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contract monitor</a>
-
-        <a href="{% url 'smartpollution:about' %}"
-           class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">About</a>
+<header id="home">
+    <div class="container-fluid">
+        <!-- change the image in style.css to the class header .container-fluid [approximately row 50] -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-xs-10">
+                    <a href="http://www.uzh.ch" class="thumbnail logo">
+                        <img src="{% static 'images/uzh_logo_long.png' %}" alt="" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-md-1 col-md-offset-8 col-xs-2 text-center">
+                    <div class="menu-btn"><span class="hamburger"><i class="fa fa-bars"></i></span></div>
+                </div>
+            </div>
+            <div class="jumbotron">
+                <h1>
+                    <small>All your</small>
+                    </br>
+                    <strong>smartcontracts on one page</strong></h1>
+                <p>
+                    <a href="{% url 'smartpollution:register_contract' %}" button
+                       class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Register a new contract to be
+                        watched</a>
+                </p>
+            </div>
+        </div>
     </div>
-</div>
-<!-- Header -->
-<header class="w3-container w3-blue w3-center" style="padding:128px 16px">
-    <h1 class="w3-margin w3-jumbo">Contract monitor</h1>
-    <a href="{% url 'smartpollution:register_contract' %}" button
-       class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Register a new contract to be watched</a>
 </header>
+<section id="feat">
+    <div class="container">
+        <div class="w3-content">
+            <br class="w3-twothird">
+            <h1>Active contracts:</h1>
+            {% for contract in contracts %}
+                <ul class="w3-ul">
+                    Watch this contract on Etherscan.io: <a id=link{{ contract.id }}
+                                                            href='https://google.com'>{{ contract.contract_name }}</a>
+                    <li>Contract address: {{ contract.contract_address }}</li>
+                    <li id={{ contract.id }}>Current Value</li>
+                    <script src='../../static/smartpollution/web3.min.js'></script>
+                    <script src="../../static/smartpollution/jquery-3.1.1.min.js"></script>
+                    <script>
+                        var Web3 = require('web3');
+                        var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/6I3dntS0W3179HBtMu0X'));
+                        var version = web3.version.api;
 
-<div class="w3-row-padding w3-padding-64 w3-container">
-    <div class="w3-content">
-        <br class="w3-twothird">
-        <h1>Active contracts:</h1>
-        {% for contract in contracts %}
-            <ul class="w3-ul">
-                Watch this contract on Etherscan.io: <a id=link{{ contract.id }}
-                                                        href='https://google.com'>{{ contract.contract_name }}</a>
-                <li>Contract address: {{ contract.contract_address }}</li>
-                <li id={{ contract.id }}>Current Value</li>
-                <script src='../../static/smartpollution/web3.min.js'></script>
-                <script src="../../static/smartpollution/jquery-3.1.1.min.js"></script>
-                <script>
-                    var Web3 = require('web3');
-                    var web3 = new Web3(new Web3.providers.HttpProvider('https://ropsten.infura.io/6I3dntS0W3179HBtMu0X'));
-                    var version = web3.version.api;
+                        var abi = '[ { "constant": false, "inputs": [ { "name": "_value", "type": "int32" } ], "name": "changeLowerTrigger", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "metric", "outputs": [ { "name": "name", "type": "string", "value": "place_holder_metric_name_to_be_autogenerated" }, { "name": "value", "type": "int32", "value": "666" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_value", "type": "int32" } ], "name": "changeUpperTrigger", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_value", "type": "int32" } ], "name": "update", "outputs": [], "payable": false, "type": "function" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_value", "type": "int32" } ], "name": "ValueChanged", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_alarm", "type": "string" }, { "indexed": false, "name": "_value", "type": "int32" } ], "name": "Alarm", "type": "event" } ]';
+                        var abi = JSON.parse(abi);
 
-                    var abi = '[ { "constant": false, "inputs": [ { "name": "_value", "type": "int32" } ], "name": "changeLowerTrigger", "outputs": [], "payable": false, "type": "function" }, { "constant": true, "inputs": [], "name": "metric", "outputs": [ { "name": "name", "type": "string", "value": "place_holder_metric_name_to_be_autogenerated" }, { "name": "value", "type": "int32", "value": "666" } ], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_value", "type": "int32" } ], "name": "changeUpperTrigger", "outputs": [], "payable": false, "type": "function" }, { "constant": false, "inputs": [ { "name": "_value", "type": "int32" } ], "name": "update", "outputs": [], "payable": false, "type": "function" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_value", "type": "int32" } ], "name": "ValueChanged", "type": "event" }, { "anonymous": false, "inputs": [ { "indexed": false, "name": "_alarm", "type": "string" }, { "indexed": false, "name": "_value", "type": "int32" } ], "name": "Alarm", "type": "event" } ]';
-                    var abi = JSON.parse(abi);
+                        var contAbi = web3.eth.contract(abi);
+                        var cont = contAbi.at('{{ contract.contract_address }}');
+                        //var events = cont.allEvents({fromBlock: 500000, toBlock: 'latest'});
+                        //var temp_str='';
+                        //events.get(function(error, result){ temp_str=JSON.stringify(result);});
+                        document.getElementById('link' + String({{ contract.id }})).href = "https://ropsten.etherscan.io/address/" + String('{{ contract.contract_address }}');
+                        document.getElementById({{ contract.id }}).innerHTML = cont.metric();
+                    </script>
+                </ul>
+                <a href="{% url 'smartpollution:detail_contract' contract.id %}">Look up details</a>
+                <br>
+            {% endfor %}
 
-                    var contAbi = web3.eth.contract(abi);
-                    var cont = contAbi.at('{{ contract.contract_address }}');
-                    //var events = cont.allEvents({fromBlock: 500000, toBlock: 'latest'});
-                    //var temp_str='';
-                    //events.get(function(error, result){ temp_str=JSON.stringify(result);});
-                    document.getElementById('link'+String({{ contract.id }})).href = "https://ropsten.etherscan.io/address/"+String('{{ contract.contract_address }}');
-                    document.getElementById({{ contract.id }}).innerHTML = cont.metric();
-                </script>
             </ul>
-            <a href="{% url 'smartpollution:detail_contract' contract.id %}">Look up details</a>
-            <br>
-        {% endfor %}
+        </div>
+        <div class="w3-third w3-center">
+        </div>
 
-        </ul>
     </div>
-    <div class="w3-third w3-center">
     </div>
-
-</div>
-</div>
+</section>
+<section id="feat">
+    <div class="container">
+        <div class="row features">
+            <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="100ms">
+                <span class="typcn typcn-pencil x3"></span>
+                <h4>Smartcontract</h4>
+                <p>Specify the data and we will generate the rest for you! Never has creating a smartcontract been so
+                    easy. You are just a few clicks away all we need from you are a few cornervalues..</p>
+            </div>
+            <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="300ms">
+                <span class="typcn typcn-camera-outline x3"></span>
+                <h4>Devices</h4>
+                <p>Monitoring your devices has never been so easy. Just add your device to our database and we will
+                    provide all meaningful data in a simple and readable format.</p>
+            </div>
+            <div class="col-md-4 text-center wow fadeInUp" data-wow-delay="500ms">
+                <span class="typcn typcn-bookmark x3"></span>
+                <h4>Monitoring</h4>
+                <p>Monitoring your active smartcontracts? No problem with our solution simply supply us with your
+                    contract address and ABI. And we will supply you with your Event-history and other meaningful
+                    context data.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="history" class="story wow fadeInUp" data-wow-delay="300ms">
+    <!-- change the image in style.css to the class .story .container-fluid [approximately row 141] -->
+    <div class="container-fluid">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 opaline">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <p class="lead"><i>Ethereum is a decentralized platform that runs smart contracts:
+                                applications that run exactly as programmed without any possibility of downtime,
+                                censorship, fraud or third party interference.</i></p>
+                            <p><i>These apps run on a custom built blockchain, an enormously powerful shared global
+                                infrastructure that can move value around and represent the ownership of property. This
+                                enables developers to create markets, store registries of debts or promises, move funds
+                                in accordance with instructions given long in the past (like a will or a futures
+                                contract) and many other things that have not been invented yet, all without a middle
+                                man or counterparty risk.
+                                The project was bootstrapped via an ether pre-sale during August 2014 by fans all around
+                                the world. It is developed by the Ethereum Foundation, a Swiss nonprofit, with
+                                contributions from great minds across the globe.</i></p>
+                            <h6 class="lead"> – ETHEREUM FOUNDATION</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="clients wow fadeInUp" data-wow-delay="300ms">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{% static 'images/uzh_logo_long_black.png' %}" class="img-responsive"/>
+            </div>
+            <div class="col-md-2">
+                <img src="{% static 'images/logoUZH.png' %}" class="img-responsive"/>
+            </div>
+            <div class="col-md-2">
+                <img src="{% static 'images/logo-csg.png' %}" class="img-responsive"/>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <p>© 2016 UZH. Designed and Developed by <a target="_blank" href="https://github.com/SandroLuck">Sandro
+                    Luck</a></p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-right social">
+                    <a href="https://www.facebook.com/UZH/" target="_blank"><i
+                            class="typcn typcn-social-facebook-circular"></i></a>
+                    <a href="https://twitter.com/UZH/" target="_blank"><i
+                            class="typcn typcn-social-twitter-circular"></i></a>
+                    <i class="typcn typcn-social-tumbler-circular"></i>
+                    <i class="typcn typcn-social-github-circular"></i>
+                    <i class="typcn typcn-social-dribbble-circular"></i>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap-scrollspy.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{% static 'assets/js/ie10-viewport-bug-workaround.js' %}"></script>
+<script src="http://masonry.desandro.com/masonry.pkgd.js"></script>
+<script src="{% static 'assets/js/masonry.js' %}"></script>
+<script src="{% static 'assets/js/pushy.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+<script src="{% static 'assets/js/scripts.js' %}"></script>
+<script src="{% static 'assets/js/odometer.js' %}"></script>
 </body>
+</html>

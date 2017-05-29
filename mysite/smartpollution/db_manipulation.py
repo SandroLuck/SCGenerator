@@ -16,7 +16,7 @@ def add_metric_to_device(request, pk):
         arguments = {}
         arguments['pk'] = pk
         arguments['metrics'] = Metric.objects.all()
-        return render(request, 'smartpollution/add_metric_to_device.html', arguments)
+        return render(request, 'smartpollution/addmetrictodevice.html', arguments)
     except:
         return return_problem_page(request)
 
@@ -33,7 +33,7 @@ def add_template_to_device(request, pk):
         arguments = {}
         arguments['pk'] = pk
         arguments['metrics_of_device'] = Device.objects.get(id=pk).metrics.all()
-        return render(request, 'smartpollution/add_template_to_device.html', arguments)
+        return render(request, 'smartpollution/addtemplatetodevice.html', arguments)
     except:
         return return_problem_page(request)
 
