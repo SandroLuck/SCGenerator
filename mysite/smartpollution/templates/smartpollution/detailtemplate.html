@@ -85,19 +85,19 @@
         <div class="w3-content">
             <br class="w3-twothird">
 
-            <h1>For {{ device.device_name }} made by {{ device.manufacturing_company }}</h1>
+            <h3>For <a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }}</a> made by {{ device.manufacturing_company }}</h3>
             <ul class="w3-ul">
                 {% for temp in templates %}
-                    <li><a href="{% url 'smartpollution:detail_template' temp.id %}">{{ temp.template_name }}<a/></li>
+                    <li><a href="{% url 'smartpollution:detail_template' temp.id %}">{{ temp.template_name }}</a></li>
                 {% endfor %}
             </ul>
-            <h1>Measures:</h1>
+            <h3>Measures:</h3>
             <ul class="w3-ul">
                 {% for met in device.metrics.all %}
                     <li>{{ met.physical_property }} in {{ met.unit_of_measurement }}<br/></li>
                 {% endfor %}
             </ul>
-            <h1>Has Trigger for:</h1>
+            <h3>Has Trigger for:</h3>
             <ul class="w3-ul">
                 {% for thres in thresholds %}
                     <li>{{ thres.metric.physical_property }} in {{ thres.metric.unit_of_measurement }} :
@@ -190,13 +190,9 @@
             </div>
             <div class="col-md-4">
                 <p class="text-right social">
-                    <a href="https://www.facebook.com/UZH/" target="_blank"><i
+                    <a href="https://www.facebook.com/uzh.ch/" target="_blank"><i
                             class="typcn typcn-social-facebook-circular"></i></a>
-                    <a href="https://twitter.com/UZH/" target="_blank"><i
-                            class="typcn typcn-social-twitter-circular"></i></a>
-                    <i class="typcn typcn-social-tumbler-circular"></i>
-                    <i class="typcn typcn-social-github-circular"></i>
-                    <i class="typcn typcn-social-dribbble-circular"></i>
+                    <a href="https://www.github.com/SandroLuck/"target="_blank"><i class="typcn typcn-social-github-circular"></i></a>
                 </p>
             </div>
         </div>

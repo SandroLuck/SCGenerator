@@ -1,10 +1,20 @@
 /*------------------------------------*\
 	COMMONS CLASSES
 \*------------------------------------*/
+label {
+    width: 50%;
+}
 input[type=submit] {
     width: 20%;
     class: "w3-button w3-black w3-padding-large w3-large w3-margin-top"
 
+}
+
+input{
+    width: 30%;
+}
+input[type=search]{
+    width: 60%;
 }
 input[type=checkbox] {
     /* Double-sized Checkboxes */
@@ -14,19 +24,6 @@ input[type=checkbox] {
     -o-transform: scale(1.5); /* Opera */
     padding: 10px;
 }
-input[type=search]{
-    width: 50%;
-}
-input {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    display:inline-block;
-    *display: inline;     /* for IE7*/
-    zoom:1;              /* for IE7*/
-    vertical-align:middle;
-    margin-left:20px
-}
-
 
 h1, h2, h3, h4, h5, h6
 {
@@ -47,6 +44,9 @@ h1, h2, h3, h4, h5, h6
 {
     padding-top: 3.3em;
     padding-bottom: 4.2em;
+}
+container{
+    height: 500px;
 }
 
 span.typcn::before, i.typcn::before
