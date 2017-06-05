@@ -49,15 +49,13 @@ def add_device(request):
         if request.POST:
             form = RegisterDeviceForm(request.POST)
             if form.is_valid():
-                physical_p = form.cleaned_data['physical_property']
-                unit_of_m = form.cleaned_data['unit_of_measurement']
-
                 device_n = form.cleaned_data['device_name']
                 manufacturing_c = form.cleaned_data['manufacturing_company']
                 device = Device(manufacturing_company=manufacturing_c, device_name=device_n)
                 device.save()
         return redirect('smartpollution:index')
-    except:
+    except Exception as e:
+        print(e)
         return return_problem_page(request)
 
 def add_contract(request):
