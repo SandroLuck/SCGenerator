@@ -82,7 +82,7 @@ header .container-fluid {
     background-image: url(../images/IOTbetterRes.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 65vh;
+    height: 750px;
     padding-top: 36px;
 }
 
@@ -99,6 +99,8 @@ header .container-fluid {
 .logo {
     background: none;
     border: 0px;
+    height: 100px;
+    width: 200px;
 }
 
 .jumbotron {

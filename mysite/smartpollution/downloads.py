@@ -5,7 +5,7 @@ from django.utils.text import slugify
 from django.http import HttpResponse
 from wsgiref.util import FileWrapper
 
-from .generate_smartcontract import create_new_smart_contract
+from .generate_smartcontract import create_new_smart_contract, create_new_smart_contract_with_thresholds
 from django.shortcuts import render
 from .models import Template, Threshold, Metric, Device
 
@@ -15,22 +15,44 @@ def send_smart_contract(request, pk):
     Create a smartcontract file on disk and transmit it.                
     """
     try:
-        print("IN SEND_SAMART_COTNRA")
         templ = Template.objects.get(id=pk)
-        print("IN SEND_SAMART_COTNRA2")
         temp_name = str(slugify(
             templ.template_name))
         # temp_lower = thres.lower_trigger
         # temp_upper = thres.upper_trigger
         mets = []
         device = Device.objects.get(id=Template.objects.get(id=pk).device_id)
-        print("IN SEND_SAMART_COTNRA3"+str(device))
 
         mets_quarry = device.metrics.all()
         for met in mets_quarry:
-            mets.append(str(met.physical_property)+str(met.unit_of_measurement))
-        print("METS: " + str(mets))
+            mets.append(str(met.physical_property) + str(met.unit_of_measurement))
         path = create_new_smart_contract(template_name=temp_name, metrics=mets)
+        test_file = FileWrapper(open(path, 'rb'))
+
+        response = HttpResponse(test_file, content_type='text/plain')
+        response['Content-Disposition'] = r'attachment; filename=MyPollutionMonitoringContract.sol'
+        os.remove(path)
+        return response
+    except:
+        pass
+
+
+def send_smart_contract_thresholds(request, pk):
+    """                                                                         
+    Create a smartcontract file on disk and transmit it.                
+    """
+    try:
+        print("IN SEND_SAMART_COTNRA")
+        templ = Template.objects.get(id=pk)
+        print("IN SEND_SAMART_COTNRA2")
+        temp_name = str(slugify(
+            templ.template_name))
+        all_thres=Threshold.objects.filter(template=templ)
+        device = Device.objects.get(id=Template.objects.get(id=pk).device_id)
+        print("IN SEND_SAMART_COTNRA3" + str(device))
+
+        mets_quarry = device.metrics.all()
+        path = create_new_smart_contract_with_thresholds(template_name=temp_name, thresholds=all_thres)
         test_file = FileWrapper(open(path, 'rb'))
         print("IN SEND_SAMART_COTNRA2")
 
@@ -40,6 +62,7 @@ def send_smart_contract(request, pk):
         return response
     except:
         pass
+
 
 """def send_smart_contract(request, pk):
                                                                            

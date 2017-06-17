@@ -75,6 +75,8 @@
                        class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Add a metric to device</a>
                     <a href="{% url 'smartpollution:download_smartcontract' template.id %}" button
                        class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Download smartcontract</a>
+                    <a href="{% url 'smartpollution:download_smartcontract_thresholds' template.id %}" button
+                       class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Download smartcontract with thresholds</a>
                 </p>
             </div>
         </div>
@@ -85,7 +87,8 @@
         <div class="w3-content">
             <br class="w3-twothird">
 
-            <h3>For <a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }}</a> made by {{ device.manufacturing_company }}</h3>
+            <h3>For <a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }}</a> made
+                by {{ device.manufacturing_company }}</h3>
             <ul class="w3-ul">
                 {% for temp in templates %}
                     <li><a href="{% url 'smartpollution:detail_template' temp.id %}">{{ temp.template_name }}</a></li>
@@ -185,13 +188,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <p>© 2017 UZH. Designed and Developed by <a target="_blank" href="https://github.com/Communication-Systems-Group/">CSG</a></p>
+                <p>© 2017 UZH. Designed and Developed by <a target="_blank"
+                                                            href="https://github.com/Communication-Systems-Group/">CSG</a>
+                </p>
             </div>
             <div class="col-md-4">
                 <p class="text-right social">
                     <a href="https://www.facebook.com/uzh.ch/" target="_blank"><i
                             class="typcn typcn-social-facebook-circular"></i></a>
-                    <a href="https://github.com/Communication-Systems-Group/"target="_blank"><i class="typcn typcn-social-github-circular"></i></a>
+                    <a href="https://github.com/Communication-Systems-Group/" target="_blank"><i
+                            class="typcn typcn-social-github-circular"></i></a>
                 </p>
             </div>
         </div>

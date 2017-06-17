@@ -25,6 +25,7 @@ urlpatterns = [
 
     url(r'^template/(?P<pk>[0-9]+)/$', views.detail_template_view, name='detail_template'),
     url(r'^template/(?P<pk>[0-9]+)/download$', downloads.send_smart_contract, name='download_smartcontract'),
+    url(r'^template/(?P<pk>[0-9]+)/downloadthresholds$', downloads.send_smart_contract_thresholds, name='download_smartcontract_thresholds'),
 
     url(r'^device/(?P<pk>[0-9]+)/add_metric/$', db_manipulation.add_metric_to_device, name='add_metric_to_device'),
 
