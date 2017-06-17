@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.shortcuts import get_object_or_404, render
 from smartpollution.forms import *
 from .models import Device, Metric, Template, Threshold, Contract
-from .views import return_problem_page
+from .views import *
 
 
 def add_metric_to_device(request, pk):
@@ -15,7 +15,12 @@ def add_metric_to_device(request, pk):
     try:
         arguments = {}
         arguments['pk'] = pk
-        arguments['metrics'] = Metric.objects.all()
+        pot_met = Metric.objects.all()
+        arguments['metrics']=[]
+        arguments['device']=Device.objects.get(id=pk)
+        for met in pot_met:
+            if met not in Device.objects.get(id=pk).metrics.all():
+                arguments['metrics'].append(met)
         return render(request, 'smartpollution/addmetrictodevice.html', arguments)
     except:
         return return_problem_page(request)
@@ -46,6 +51,7 @@ def add_device(request):
     :return: redirect user to mainpage
     """
     try:
+        redirect_id=1;
         if request.POST:
             form = RegisterDeviceForm(request.POST)
             if form.is_valid():
@@ -53,14 +59,15 @@ def add_device(request):
                 manufacturing_c = form.cleaned_data['manufacturing_company']
                 device = Device(manufacturing_company=manufacturing_c, device_name=device_n)
                 device.save()
-        return redirect('smartpollution:index')
+                redirect_id=device.id;
+        return detail_view(request,redirect_id)
     except Exception as e:
         print(e)
         return return_problem_page(request)
 
 def add_contract(request):
     try:
-        print("add contract")
+        redirect_id=1;
         if request.POST:
             form = RegisterContractForm(request.POST)
             if form.is_valid():
@@ -70,7 +77,8 @@ def add_contract(request):
                 contract = Contract(contract_name=contract_name, contract_address=contract_address, contract_abi=contract_abi)
                 print(contract_name, contract_address, contract_abi)
                 contract.save()
-        return redirect('smartpollution:contract_monitor')
+                redirect_id=contract.id
+        return detail_contract_view(request, redirect_id)
     except:
         return return_problem_page(request)
 
@@ -84,13 +92,16 @@ def save_metric_to_device(request, pk):
     :return: redirect user to mainpage
     """
     try:
+        redirect_id=1
         if request.POST:
             for key, value in request.POST.items():
                 if key.isdigit():
                     met = Metric.objects.get(id=key)
                     dev = Device.objects.get(id=pk)
                     dev.metrics.add(met)
-        return redirect('smartpollution:index')
+                    dev.save();
+                    redirect_id=dev.id
+        return detail_view(request, redirect_id)
     except:
         return return_problem_page(request)
 
@@ -103,6 +114,7 @@ def save_template_to_device(request, pk):
     :return: redirect user to mainpage
     """
     try:
+        redirect_id = 1;
         if request.POST:
             device = Device.objects.get(id=pk)
             template = Template(device=device)
@@ -127,7 +139,8 @@ def save_template_to_device(request, pk):
                     if "template_name" in key:
                         template.template_name = value
                         template.save()
-        return redirect('smartpollution:index')
+                        redirect_id=template.id;
+        return detail_template_view(request, redirect_id);
     except:
         return return_problem_page(request)
 
@@ -148,5 +161,24 @@ def add_metric(request):
                 metric = Metric(physical_property=physical_p, unit_of_measurement=unit_of_m)
                 metric.save()
         return redirect('smartpollution:index')
+    except:
+        return return_problem_page(request)
+
+
+def add_metric_silent(request, pk):
+    """
+    Adds a metric to the db from add metrics to device view
+    :param request: the metric data to save
+    :return: 
+    """
+    try:
+        if request.POST:
+            form = RegisterMetricForm(request.POST)
+            if form.is_valid():
+                physical_p = form.cleaned_data['physical_property']
+                unit_of_m = form.cleaned_data['unit_of_measurement']
+                metric = Metric(physical_property=physical_p, unit_of_measurement=unit_of_m)
+                metric.save()
+        return add_metric_to_device(request, pk)
     except:
         return return_problem_page(request)

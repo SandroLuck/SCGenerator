@@ -19,12 +19,15 @@ urlpatterns = [
     url(r'^registerdevice/add$', db_manipulation.add_device, name='register_device_add'),
     url(r'^registermetric/$', views.register_metric_view, name='register_metric'),
     url(r'^registermetric/add$', db_manipulation.add_metric, name='register_metric_add'),
+    url(r'^registermetric/addSilent/(?P<pk>[0-9]+)/$', db_manipulation.add_metric_silent, name='register_metric_add_silent'),
+
     url(r'^device/(?P<pk>[0-9]+)/$', views.detail_view, name='detail'),
 
     url(r'^template/(?P<pk>[0-9]+)/$', views.detail_template_view, name='detail_template'),
     url(r'^template/(?P<pk>[0-9]+)/download$', downloads.send_smart_contract, name='download_smartcontract'),
 
     url(r'^device/(?P<pk>[0-9]+)/add_metric/$', db_manipulation.add_metric_to_device, name='add_metric_to_device'),
+
     url(r'^device/(?P<pk>[0-9]+)/addMetricSave/$', db_manipulation.save_metric_to_device,name='add_metric_to_device_save'),
 
     url(r'^device/(?P<pk>[0-9]+)/addTemplate/$', db_manipulation.add_template_to_device, name='add_template_to_device'),

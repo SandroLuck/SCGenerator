@@ -2,21 +2,32 @@
 	COMMONS CLASSES
 \*------------------------------------*/
 label {
-    width: 50%;
+    width: 30%;
+    height: 50px;
+    vertical-align: center;
+}
+input{
+    height: 50px;
 }
 input[type=submit] {
-    width: 20%;
-    class: "w3-button w3-black w3-padding-large w3-large w3-margin-top"
-
+    width: auto;
+    position: relative;
 }
 
-input{
-    width: 30%;
+input[type=text],[type=number] {
+    width: 300px;
+    float: right;
+    display: inline;
+    vertical-align: center;
 }
-input[type=search]{
-    width: 60%;
+
+input[type=search] {
+    width: 40%;
 }
+
 input[type=checkbox] {
+    height: auto;
+    width: auto;
     /* Double-sized Checkboxes */
     -ms-transform: scale(1.5); /* IE */
     -moz-transform: scale(1.5); /* FF */
@@ -25,13 +36,11 @@ input[type=checkbox] {
     padding: 10px;
 }
 
-h1, h2, h3, h4, h5, h6
-{
+h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto Slab', serif;
 }
 
-h1, h2, h3, h4, h5, h6
-{
+h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1.1em;
     text-overflow: ellipsis;
 }
@@ -40,70 +49,59 @@ h1, h2, h3, h4, h5, h6
 .blog,
 .gallery,
 .clients,
-.prefooter .container-fluid
-{
+.prefooter .container-fluid {
     padding-top: 3.3em;
     padding-bottom: 4.2em;
 }
-container{
-    height: 500px;
+
+container {
+    height: 700px;
 }
 
-span.typcn::before, i.typcn::before
-{
+span.typcn::before, i.typcn::before {
     font-size: 2em;
 }
 
-span.x2:before, i.x2:before
-{
+span.x2:before, i.x2:before {
     font-size: 3.4em;
 }
 
-span.x3:before, i.x3:before
-{
+span.x3:before, i.x3:before {
     font-size: 4.4em;
 }
 
-span.x4:before, i.x4:before
-{
+span.x4:before, i.x4:before {
     font-size: 6em;
 }
-
 
 /*------------------------------------*\
 	HEADER
 \*------------------------------------*/
 
-header .container-fluid
-{
-    background-image: url('https://unsplash.it/2560/1707?image=961');
+header .container-fluid {
+    background-image: url(../images/IOTbetterRes.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 65vh;
     padding-top: 36px;
 }
 
-.hamburger
-{
+.hamburger {
     font-size: 2.3em;
     color: #000;
 }
 
-.hamburger:hover
-{
-  color: #FFF;
-  cursor: pointer;
+.hamburger:hover {
+    color: #FFF;
+    cursor: pointer;
 }
 
-
-.logo
-{
+.logo {
     background: none;
     border: 0px;
 }
 
-.jumbotron
-{
+.jumbotron {
     background: none;
     text-align: center;
 }
@@ -114,32 +112,27 @@ header .container-fluid
 .jumbotron h4,
 .jumbotron h5,
 .jumbotron h6,
-.jumbotron small
-{
+.jumbotron small {
     color: #FFFFFF;
 }
 
-.jumbotron p
-{
+.jumbotron p {
     color: #FFFFFF;
     margin-bottom: 5%;
 }
-
 
 /*------------------------------------*\
 	SECTIONS
 \*------------------------------------*/
 
-.number .container-fluid
-{
+.number .container-fluid {
     background-image: url('https://unsplash.it/3000/2000?image=685');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.opaline
-{
+.opaline {
     padding-top: 3em;
     padding-bottom: 3em;
     background-color: rgba(128, 215, 247, 0.660);
@@ -151,44 +144,37 @@ header .container-fluid
 .opaline h4,
 .opaline h5,
 .opaline h6,
-.opaline p
-{
+.opaline p {
     color: #FFFFFF;
 }
 
-.opaline .boxes
-{
+.opaline .boxes {
     margin-top: 30px;
     padding-top: 20px;
     padding-bottom: 5px;
     border: 1px solid #FFF;
 }
 
-.boxes .odometer.odometer-theme-default
-{
-  font-family: 'Roboto Slab', serif;
+.boxes .odometer.odometer-theme-default {
+    font-family: 'Roboto Slab', serif;
 }
 
-.story .container-fluid
-{
+.story .container-fluid {
     background-image: url('https://www.ethereum.org/images/wallpaper-homestead-small.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.gallery
-{
+.gallery {
     background-color: #dddddd;
 }
 
-.prefooter .container-fluid
-{
+.prefooter .container-fluid {
     background: linear-gradient(
-      rgba(33, 37, 43, 0.6),
-      rgba(33, 37, 43, 0.6)
+            rgba(33, 37, 43, 0.6),
+            rgba(33, 37, 43, 0.6)
     ),
-
     url(https://unsplash.it/4000/3000?image=528);
 }
 
@@ -198,8 +184,7 @@ header .container-fluid
 .prefooter h4,
 .prefooter h5,
 .prefooter h6,
-.prefooter p
-{
+.prefooter p {
     color: #FFFFFF;
 }
 
@@ -207,8 +192,7 @@ header .container-fluid
 	FOOTER
 \*------------------------------------*/
 
-footer
-{
+footer {
     background-color: rgba(36, 50, 59, 1);
     padding-top: 2em;
     padding-bottom: 1.2em;
@@ -220,13 +204,11 @@ footer h3,
 footer h4,
 footer h5,
 footer h6,
-footer p
-{
+footer p {
     color: #FFFFFF;
 }
 
-.social
-{
+.social {
     padding-top: 50px;
 }
 

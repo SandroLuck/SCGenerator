@@ -8,7 +8,7 @@
     <meta name="author" content="">
     {% load static %}
     <link rel="stylesheet" href="{% static 'smartpollution/w3.css' %}">
-    <title>Mountain King - Bootstrap Template</title>
+    <title>define a template</title>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/theme.css' %}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -82,7 +82,7 @@
             <br class="w3-twothird">
             <form action={% url 'smartpollution:add_template_to_device_save' pk %} method="post">{% csrf_token %}
                 {% if metrics_of_device %}
-                    Enter th new templates name:<input type="text" name="template_name"><br>
+                    <label for='template_name'>Enter the new templates name:</label><input type="text" name="template_name"><br>
                     {% for met in metrics_of_device %}
                         <label for=lower:{{ met.id }}>{{ met.physical_property }} in
                             {{ met.unit_of_measurement }} lower trigger:</label>
@@ -92,17 +92,18 @@
                                max="1000000"
                                step="1"
                                value="NaN">
-
+                        <br>
                         <label for=lower:{{ met.id }}>{{ met.physical_property }} in
                             {{ met.unit_of_measurement }} upper trigger:</label><input type="number"
                                                                                        name=upper:{{ met.id }}
                                                                                        min="-1000000"
                                                                                        max="1000000"
                                                                                        step="1"
-                                                                                       value="NaN"></br>
+                                                                                       value="NaN">
+                        <br>
                     {% endfor %}
                     <input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit"
-                           value="Send message"/>
+                           value="Define Template"/>
                 {% else %}
                     <li>Sorry, there are no no metrics assigned to this device. Change it
                         <a href="{% url 'smartpollution:add_metric_to_device' pk %}">here</a>
@@ -190,14 +191,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <p>© 2016 UZH. Designed and Developed by <a target="_blank" href="https://github.com/SandroLuck">Sandro
-                    Luck</a></p>
+                <p>© 2017 UZH. Designed and Developed by <a target="_blank" href="https://github.com/Communication-Systems-Group/">CSG</a></p>
             </div>
             <div class="col-md-4">
                 <p class="text-right social">
                     <a href="https://www.facebook.com/uzh.ch/" target="_blank"><i
                             class="typcn typcn-social-facebook-circular"></i></a>
-                    <a href="https://www.github.com/SandroLuck/"target="_blank"><i class="typcn typcn-social-github-circular"></i></a>
+                    <a href="https://github.com/Communication-Systems-Group/"target="_blank"><i class="typcn typcn-social-github-circular"></i></a>
                 </p>
             </div>
         </div>

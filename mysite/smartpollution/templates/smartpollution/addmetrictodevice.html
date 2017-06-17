@@ -8,7 +8,7 @@
     <meta name="author" content="">
     {% load static %}
     <link rel="stylesheet" href="{% static 'smartpollution/w3.css' %}">
-    <title>Mountain King - Bootstrap Template</title>
+    <title>Add metrics to device</title>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'bootstrap/css/theme.css' %}" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -67,7 +67,7 @@
                 <h1>
                     <small>Add metrics</small>
                     </br>
-                    <strong>this device captures</strong></h1>
+                    <strong>to {{ device.device_name }}</strong></h1>
                 <p>
                     <a href="{% url 'smartpollution:register_metric' %}" button
                        class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Register a new Metric</a>
@@ -93,12 +93,27 @@
                         {% endfor %}
                     {% endif %}
                     <input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit"
-                           value="Send message"/>
+                           value="Add metrics to device"/>
                 </form>
             </div>
             <div class="w3-third w3-center">
             </div>
         </div>
+    </div>
+    <div class="container">
+        <div class="w3-content">
+            <h3>Register a new metric</h3>
+            <br class="w3-twothird">
+            <form action={% url 'smartpollution:register_metric_add_silent' pk %} method="post">{% csrf_token %}
+                <label for="physical_property">Physical property measured( e.g. temperature):</label>
+                <input type="text" id="physical_property" name="physical_property"><br>
+                <label for="unit_of_measurement">Unit of measurement( e.g. Celsius):</label>
+                <input type="text" id="unit_of_measurement" name="unit_of_measurement"><br>
+                <input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit"
+                       value="Add metric"/>
+            </form>
+        </div>
+
     </div>
 </section>
 <section id="feat">
@@ -173,14 +188,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <p>© 2016 UZH. Designed and Developed by <a target="_blank" href="https://github.com/SandroLuck">Sandro
-                    Luck</a></p>
+                <p>© 2017 UZH. Designed and Developed by <a target="_blank" href="https://github.com/Communication-Systems-Group/">CSG</a></p>
             </div>
             <div class="col-md-4">
                 <p class="text-right social">
                     <a href="https://www.facebook.com/uzh.ch/" target="_blank"><i
                             class="typcn typcn-social-facebook-circular"></i></a>
-                    <a href="https://www.github.com/SandroLuck/"target="_blank"><i class="typcn typcn-social-github-circular"></i></a>
+                    <a href="https://github.com/Communication-Systems-Group/"target="_blank"><i class="typcn typcn-social-github-circular"></i></a>
                 </p>
             </div>
         </div>
