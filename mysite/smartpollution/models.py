@@ -1,4 +1,4 @@
-
+import psycopg2
 # Create your models here.
 from django.db import models
 from django.utils import timezone
@@ -32,8 +32,8 @@ class Template(models.Model):
 class Threshold(models.Model):
     template=models.ForeignKey(Template, on_delete=models.CASCADE)
     metric=models.ForeignKey(Metric, on_delete=models.CASCADE)
-    lower_trigger=models.DecimalField( max_digits=19, decimal_places=10, blank=True, null=True)
-    upper_trigger=models.DecimalField( max_digits=19, decimal_places=10, blank=True, null=True)
+    lower_trigger=models.IntegerField(blank=True, null=True)
+    upper_trigger=models.IntegerField(blank=True, null=True)
     def __str__(self):
         return str(self.id)
 

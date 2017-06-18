@@ -60,6 +60,7 @@ def create_new_smart_contract(template_name='PollutionTracker', metrics=[]):
 
 
 def create_new_smart_contract_with_thresholds(template_name='PollutionTracker', thresholds=[]):
+    print('Creating thresholds contract.')
     with open(os.path.join(os.getcwd(), template_name + '.sol'), 'w', encoding='utf-8') as out_file, open(
             os.path.join(os.getcwd(), 'smartpollution', 'static', 'smartcontracts',
                          'simple_template_smartcontract_with_thresholds.sol'), 'r', encoding='utf-8') as template_f:
@@ -69,39 +70,55 @@ def create_new_smart_contract_with_thresholds(template_name='PollutionTracker', 
             else:
                 if "@tresholdsInit@" in lin:
                     for thres in thresholds:
-                        out_file.write('int16 ' + str(thres.metric.physical_property) + str(
+                        out_file.write('\t\tint16 ' + str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + 'LT =' + str(int(thres.lower_trigger)) + ';\n')
-                        out_file.write('int16 ' + str(thres.metric.physical_property) + str(
+                        out_file.write('\t\tint16 ' + str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + 'UT =' + str(int(thres.upper_trigger)) + ';\n')
                 if "@contractName@" in lin:
                     out_file.write(lin.replace('@contractName@', str(template_name).replace('-', '')))
                 if "@singleEvents@" in lin:
                     for thres in thresholds:
-                        out_file.write('\t\tevent ' + str(thres.metric.physical_property) + str(
+                        out_file.write('\t\tevent Alarm' + str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + '(' + 'int16 _val' + str(
                             thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + ',' + 'string _id);\n')
                 if "@paramsAlarmAll@" in lin:
-                    out_file.write('\t\t\t')
+                    out_file.write('\t\t')
+                    a=0
                     for thres in thresholds:
                         out_file.write(' int16 _val' + str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + ',')
-                        out_file.write(' string _id\n')
+                    out_file.write(' string _id\n')
 
                 if "@paramsUpdateAll@" in lin:
+                    out_file.write('\t\t\t')
                     for thres in thresholds:
-                        out_file.write('\t\t\t\tint16 _val' + str(thres.metric.physical_property) + str(
+                        out_file.write('int16 _val' + str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + ',')
                     out_file.write(' string _id\n')
+                if "@codeUpdateAllIf" in lin:
+                    i = 0;
+                    for thres in thresholds:
+                        i = i + 1
+                        out_file.write('\t\t\t(' + str(thres.metric.physical_property) + str(
+                            thres.metric.unit_of_measurement) + 'LT' + ' > ' + '_val' + str(
+                            thres.metric.physical_property) + str(thres.metric.unit_of_measurement) + ' || ' +
+                                       str(thres.metric.physical_property) + str(
+                            thres.metric.unit_of_measurement) + 'UT' + ' < ' + '_val' + str(
+                            thres.metric.physical_property) + str(thres.metric.unit_of_measurement) + ')')
+                        print('Length:' + str(len(thresholds)) + ' I:' + str(i))
+                        if i < len(thresholds):
+                            out_file.write(' && \n')
+
                 if "@codeUpdateAll@" in lin:
                     out_file.write('\t\t\t\tAlarmAll(')
                     for thres in thresholds:
                         out_file.write(' _val' + str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + ',')
-                        out_file.write(' _id);\n')
+                    out_file.write(' _id);\n')
                 if "@singleUpdate@" in lin:
                     for thres in thresholds:
-                        out_file.write('\t\tfunction alarm' + str(thres.metric.physical_property) + str(
+                        out_file.write('\t\tfunction update' + str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + '(' + 'int16 _val' + str(
                             thres.metric.physical_property) + str(thres.metric.unit_of_measurement)
                                        + ',' + 'string _id) onlyOwner{' +
@@ -111,8 +128,21 @@ def create_new_smart_contract_with_thresholds(template_name='PollutionTracker', 
                                        str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + 'UT' + ' < ' + '_val' + str(
                             thres.metric.physical_property) + str(thres.metric.unit_of_measurement) + '){'
-                                       + str(thres.metric.physical_property) + str(
+                                       + 'Alarm'+str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + '(' + '_val' + str(
                             thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + ', ' + '_id);}}\n')
+                if "@codeUpdateAllElse@" in lin:
+                    for thres in thresholds:
+                        out_file.write('\t\t\t'+
+                                       'if(' + str(thres.metric.physical_property) + str(
+                            thres.metric.unit_of_measurement) + 'LT' + ' > ' + '_val' + str(
+                            thres.metric.physical_property) + str(thres.metric.unit_of_measurement) + ' || ' +
+                                       str(thres.metric.physical_property) + str(
+                            thres.metric.unit_of_measurement) + 'UT' + ' < ' + '_val' + str(
+                            thres.metric.physical_property) + str(thres.metric.unit_of_measurement) + '){'
+                                       + 'Alarm'+str(thres.metric.physical_property) + str(
+                            thres.metric.unit_of_measurement) + '(' + '_val' + str(
+                            thres.metric.physical_property) + str(
+                            thres.metric.unit_of_measurement) + ', ' + '_id);}\n')
     return os.path.join(os.getcwd(), template_name + '.sol')

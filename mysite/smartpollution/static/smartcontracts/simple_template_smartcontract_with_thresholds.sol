@@ -18,14 +18,23 @@ contract @contractName@ is owned {
     @tresholdsInit@
 
     @singleEvents@
+
     event AlarmAll(
     @paramsAlarmAll@
     );
     @singleUpdate@
-    function alarmAll(
+    function updateAll(
         @paramsUpdateAll@
-      ) onlyOwner
-      {
+    ) onlyOwner
+    {
+      if(
+      @codeUpdateAllIf@
+
+      ){
        @codeUpdateAll@
-      }
+       }
+       else{
+       @codeUpdateAllElse@
+       }
+    }
 }

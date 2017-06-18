@@ -57,7 +57,7 @@ def add_device(request):
             if form.is_valid():
                 device_n = form.cleaned_data['device_name']
                 manufacturing_c = form.cleaned_data['manufacturing_company']
-                device = Device(manufacturing_company=manufacturing_c, device_name=device_n)
+                device = Device(manufacturing_company=manufacturing_c.replace(' ',''), device_name=device_n.replace(' ',''))
                 device.save()
                 redirect_id=device.id;
         return detail_view(request,redirect_id)
@@ -137,7 +137,7 @@ def save_template_to_device(request, pk):
                                 threshold.upper_trigger = value
                             threshold.save()
                     if "template_name" in key:
-                        template.template_name = value
+                        template.template_name = value.replace(' ','')
                         template.save()
                         redirect_id=template.id;
         return detail_template_view(request, redirect_id);
@@ -158,7 +158,7 @@ def add_metric(request):
             if form.is_valid():
                 physical_p = form.cleaned_data['physical_property']
                 unit_of_m = form.cleaned_data['unit_of_measurement']
-                metric = Metric(physical_property=physical_p, unit_of_measurement=unit_of_m)
+                metric = Metric(physical_property=physical_p.replace(' ',''), unit_of_measurement=unit_of_m.replace(' ',''))
                 metric.save()
         return redirect('smartpollution:index')
     except:
@@ -177,7 +177,7 @@ def add_metric_silent(request, pk):
             if form.is_valid():
                 physical_p = form.cleaned_data['physical_property']
                 unit_of_m = form.cleaned_data['unit_of_measurement']
-                metric = Metric(physical_property=physical_p, unit_of_measurement=unit_of_m)
+                metric = Metric(physical_property=physical_p.replace(' ',''), unit_of_measurement=unit_of_m.replace(' ',''))
                 metric.save()
         return add_metric_to_device(request, pk)
     except:
