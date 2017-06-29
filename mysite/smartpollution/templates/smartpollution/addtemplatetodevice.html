@@ -53,16 +53,7 @@
     <div class="container-fluid">
         <!-- change the image in style.css to the class header .container-fluid [approximately row 50] -->
         <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-xs-10">
-                    <a href="http://www.uzh.ch" class="thumbnail logo">
-                        <img src="{% static 'images/uzh_logo_long.png' %}" alt="" class="img-responsive">
-                    </a>
-                </div>
-                <div class="col-md-1 col-md-offset-8 col-xs-2 text-center">
-                    <div class="menu-btn"><span class="hamburger"><i class="fa fa-bars"></i></span></div>
-                </div>
-            </div>
+            <div class="row">                <div class="col-md-3 col-xs-10">                    <div class="menu-btn"><span class="hamburger"><i class="fa fa-bars"></i></span></div>                </div>                <div class="col-md-1 col-md-offset-8 col-xs-2 text-center">                    <a href="http://www.uzh.ch" class="thumbnail logo">                        <img src="{% static 'images/uzh_logo_long.png' %}" alt="" class="img-responsive">                    </a>                </div>            </div>
             <div class="jumbotron">
                 <h1>
                     <small>create a template</small>
@@ -82,6 +73,7 @@
             <br class="w3-twothird">
             <form action={% url 'smartpollution:add_template_to_device_save' pk %} method="post">{% csrf_token %}
                 {% if metrics_of_device %}
+                    <h3>Define your template</h3>
                     <label for='template_name'>Enter the new templates name:</label><input type="text" name="template_name"><br>
                     {% for met in metrics_of_device %}
                         <label for=lower:{{ met.id }}>{{ met.physical_property }} in
@@ -110,6 +102,8 @@
                     </li>
 
                 {% endif %}
+            <br>
+            <br>
                 <p>Lower trigger: an event is generated if the value is below "lower trigger"</p>
                 <p>Upper trigger: an event is generated if the value is above "upper trigger"</p>
             </form>
@@ -144,49 +138,8 @@
         </div>
     </div>
 </section>
-<section id="history" class="story wow fadeInUp" data-wow-delay="300ms">
-    <!-- change the image in style.css to the class .story .container-fluid [approximately row 141] -->
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 opaline">
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <p class="lead"><i>Ethereum is a decentralized platform that runs smart contracts:
-                                applications that run exactly as programmed without any possibility of downtime,
-                                censorship, fraud or third party interference.</i></p>
-                            <p><i>These apps run on a custom built blockchain, an enormously powerful shared global
-                                infrastructure that can move value around and represent the ownership of property. This
-                                enables developers to create markets, store registries of debts or promises, move funds
-                                in accordance with instructions given long in the past (like a will or a futures
-                                contract) and many other things that have not been invented yet, all without a middle
-                                man or counterparty risk.
-                                The project was bootstrapped via an ether pre-sale during August 2014 by fans all around
-                                the world. It is developed by the Ethereum Foundation, a Swiss nonprofit, with
-                                contributions from great minds across the globe.</i></p>
-                            <h6 class="lead"> – ETHEREUM FOUNDATION</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="clients wow fadeInUp" data-wow-delay="300ms">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <img src="{% static 'images/uzh_logo_long_black.png' %}" class="img-responsive"/>
-            </div>
-            <div class="col-md-2">
-                <img src="{% static 'images/logoUZH.png' %}" class="img-responsive"/>
-            </div>
-            <div class="col-md-2">
-                <img src="{% static 'images/logo-csg.png' %}" class="img-responsive"/>
-            </div>
-        </div>
-    </div>
-</section>
+
+<section class="clients wow fadeInUp" data-wow-delay="300ms">    <div class="container">        <div class="row">            <div class="col-md-2">                <img src="{% static 'images/uzh_logo_long_black.png' %}" class="img-responsive"/>            </div>            <div class="col-md-2 col-md-offset-3">                <img src="{% static 'images/logoUZH.png' %}" class="img-responsive"/>            </div>            <div class="col-md-2 col-md-offset-3">                <img src="{% static 'images/logo-csg.png' %}" class="img-responsive"/>            </div>        </div>    </div></section>
 <footer>
     <div class="container">
         <div class="row">

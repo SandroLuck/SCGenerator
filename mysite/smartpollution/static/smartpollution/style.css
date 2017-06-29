@@ -1,8 +1,9 @@
 /*------------------------------------*\
 	COMMONS CLASSES
 \*------------------------------------*/
+
 label {
-    width: 30%;
+    width: 40%;
     height: 50px;
     vertical-align: center;
 }
@@ -82,8 +83,8 @@ header .container-fluid {
     background-image: url(../images/IOTbetterRes.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 750px;
-    padding-top: 36px;
+    height: 550px;
+    padding-top: 18px;
 }
 
 .hamburger {
@@ -99,7 +100,7 @@ header .container-fluid {
 .logo {
     background: none;
     border: 0px;
-    height: 100px;
+    height: 50px;
     width: 200px;
 }
 
@@ -116,11 +117,12 @@ header .container-fluid {
 .jumbotron h6,
 .jumbotron small {
     color: #FFFFFF;
+    font-size: 40px;
 }
 
 .jumbotron p {
     color: #FFFFFF;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
 }
 
 /*------------------------------------*\
