@@ -53,7 +53,14 @@
     <div class="container-fluid">
         <!-- change the image in style.css to the class header .container-fluid [approximately row 50] -->
         <div class="container">
-            <div class="row">                <div class="col-md-3 col-xs-10">                    <div class="menu-btn"><span class="hamburger"><i class="fa fa-bars"></i></span></div>                </div>                <div class="col-md-1 col-md-offset-8 col-xs-2 text-center">                    <a href="http://www.uzh.ch" class="thumbnail logo">                        <img src="{% static 'images/uzh_logo_long.png' %}" alt="" class="img-responsive">                    </a>                </div>            </div>
+            <div class="row">
+                <div class="col-md-3 col-xs-10">
+                    <div class="menu-btn"><span class="hamburger"><i class="fa fa-bars"></i></span></div>
+                </div>
+                <div class="col-md-1 col-md-offset-8 col-xs-2 text-center"><a href="http://www.uzh.ch"
+                                                                              class="thumbnail logo"> <img
+                        src="{% static 'images/uzh_logo_long.png' %}" alt="" class="img-responsive"> </a></div>
+            </div>
             <div class="jumbotron">
                 <h1>
                     <small>Contract generation for</small>
@@ -152,18 +159,32 @@
     </div>
 </section>
 
-<section class="clients wow fadeInUp" data-wow-delay="300ms">    <div class="container">        <div class="row">            <div class="col-md-2">                <img src="{% static 'images/uzh_logo_long_black.png' %}" class="img-responsive"/>            </div>            <div class="col-md-2 col-md-offset-3">                <img src="{% static 'images/logoUZH.png' %}" class="img-responsive"/>            </div>            <div class="col-md-2 col-md-offset-3">                <img src="{% static 'images/logo-csg.png' %}" class="img-responsive"/>            </div>        </div>    </div></section>
+<section class="clients wow fadeInUp" data-wow-delay="300ms">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><img src="{% static 'images/uzh_logo_long_black.png' %}" class="img-responsive"/>
+            </div>
+            <div class="col-md-2 col-md-offset-3"><img src="{% static 'images/logoUZH.png' %}" class="img-responsive"/>
+            </div>
+            <div class="col-md-2 col-md-offset-3"><img src="{% static 'images/logo-csg.png' %}" class="img-responsive"/>
+            </div>
+        </div>
+    </div>
+</section>
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <p>© 2017 UZH. Designed and Developed by <a target="_blank" href="https://github.com/Communication-Systems-Group/">CSG</a></p>
+                <p>© 2017 UZH. Designed and Developed by <a target="_blank"
+                                                            href="https://github.com/Communication-Systems-Group/">CSG</a>
+                </p>
             </div>
             <div class="col-md-4">
                 <p class="text-right social">
                     <a href="https://www.facebook.com/uzh.ch/" target="_blank"><i
                             class="typcn typcn-social-facebook-circular"></i></a>
-                    <a href="https://github.com/Communication-Systems-Group/"target="_blank"><i class="typcn typcn-social-github-circular"></i></a>
+                    <a href="https://github.com/Communication-Systems-Group/" target="_blank"><i
+                            class="typcn typcn-social-github-circular"></i></a>
                 </p>
             </div>
         </div>
