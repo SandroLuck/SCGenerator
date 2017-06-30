@@ -25,6 +25,8 @@ class Device(models.Model):
 class Template(models.Model):
     template_name=models.CharField(max_length=200, null=True)
     device=models.ForeignKey(Device, on_delete=models.CASCADE)
+    gas_estimate_thres=models.IntegerField(blank=True, null=True)
+    gas_estimate_no_thres=models.IntegerField(blank=True, null=True)
     def __str__(self):
         return str(self.template_name)
 

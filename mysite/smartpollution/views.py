@@ -110,6 +110,8 @@ def detail_template_view(request, pk):
         arguments['device'] = Template.objects.get(id=pk).device
         arguments['template'] = Template.objects.get(id=pk)
         arguments['thresholds'] = Threshold.objects.filter(template=Template.objects.get(id=pk))
+        arguments['cost_thres'] = Template.objects.get(id=pk).gas_estimate_thres
+        arguments['cost_no_thres'] = Template.objects.get(id=pk).gas_estimate_no_thres
         return render(request, 'smartpollution/detailtemplate.html', arguments)
     except:
         return return_problem_page(request)

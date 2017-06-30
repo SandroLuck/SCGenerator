@@ -3,6 +3,10 @@ from django.shortcuts import get_object_or_404, render
 from smartpollution.forms import *
 from .models import Device, Metric, Template, Threshold, Contract
 from .views import *
+from .read_eth_chain import *
+from .generate_smartcontract import *
+from django.utils.text import slugify
+
 
 
 def add_metric_to_device(request, pk):
@@ -140,6 +144,44 @@ def save_template_to_device(request, pk):
                         template.template_name = value.replace(' ','')
                         template.save()
                         redirect_id=template.id;
+            #Estimate gas costs
+            try:
+                print("STARTING GAS CALCULATIONS")
+                templ = Template.objects.get(id=redirect_id)
+                print("TEMPLE"+str(templ))
+                temp_name = str(slugify(
+                    templ.template_name))
+                all_thres = Threshold.objects.filter(template=templ)
+                print("ALL_THRES:"+str(all_thres))
+                #do it for threshold template
+
+                path = create_new_smart_contract_with_thresholds(template_name=temp_name, thresholds=all_thres)
+                print("PATH 1 for smartC:"+path)
+                gas_estimate=get_contract_gas(path)
+                print("GAS ESTIAMTE IS:"+str(gas_estimate))
+                template.gas_estimate_thres=gas_estimate
+                print("Befr del")
+                os.remove(path)
+                template.save()
+                print("NON THRES STARTING")
+                #do it for none threshold template
+                mets = []
+                device = Device.objects.get(id=pk)
+
+                mets_quarry = device.metrics.all()
+
+                for met in mets_quarry:
+                    mets.append(str(met.physical_property) + str(met.unit_of_measurement))
+                path = create_new_smart_contract(template_name=temp_name, metrics=mets)
+                print("PATH 2 for smartC:"+path)
+                template.gas_estimate_no_thres=get_contract_gas(path)
+                os.remove(path)
+                template.save()
+            except:
+                pass
+            print("CURRENT DIR:"+os.getcwd())
+            create_new_smart_contract_with_thresholds(os.getcwd())
+
         return detail_template_view(request, redirect_id);
     except:
         return return_problem_page(request)

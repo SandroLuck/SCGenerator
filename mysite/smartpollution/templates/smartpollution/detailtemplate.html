@@ -77,7 +77,11 @@
     <div class="container">
         <div class="w3-content">
             <br class="w3-twothird">
-
+            <h3>Gas Estimate:</h3>
+            <ul class="w3-ul">
+                <li>Gas estimate for Smart Contract: {{ cost_no_thres }}</li>
+                <li>Gas estimate for Smart Contract with thresholds: {{ cost_thres }}</li>
+            </ul>
             <h3>For <a href="{% url 'smartpollution:detail' device.id %}">{{ device.device_name }}</a> made
                 by {{ device.manufacturing_company }}</h3>
             <ul class="w3-ul">
