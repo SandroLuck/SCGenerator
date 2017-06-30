@@ -145,4 +145,28 @@ def create_new_smart_contract_with_thresholds(template_name='PollutionTracker', 
                             thres.metric.unit_of_measurement) + '(' + '_val' + str(
                             thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + ', ' + '_id);}\n')
+                if "@triggerReturns@" in lin:
+                    i = 0;
+                    for thres in thresholds:
+                        i = i + 1
+                        out_file.write('\t\tint16 ' + str(thres.metric.physical_property) + str(
+                            thres.metric.unit_of_measurement) +'LT ,int16 ' + str(
+                            thres.metric.physical_property) + str(thres.metric.unit_of_measurement)
+                                       + 'UT');
+                        if i < len(thresholds):
+                            out_file.write(' ,')
+                if "@triggerRealReturn@" in lin:
+                    i = 0;
+                    out_file.write('\t\treturn(')
+                    for thres in thresholds:
+                        i = i + 1
+                        out_file.write('\t\t' + str(thres.metric.physical_property) + str(
+                            thres.metric.unit_of_measurement) +'LT , ' + str(
+                            thres.metric.physical_property) + str(thres.metric.unit_of_measurement)
+                                       + 'UT');
+                        if i < len(thresholds):
+                            out_file.write(' ,')
+                        else:
+                            out_file.write(');')
+
     return os.path.join(os.getcwd(), template_name + '.sol')

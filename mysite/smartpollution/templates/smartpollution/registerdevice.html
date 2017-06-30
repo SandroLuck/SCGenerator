@@ -71,9 +71,9 @@
             <h3>Register a new device</h3>
             <form action={% url 'smartpollution:register_device_add' %} method="post">{% csrf_token %}
                 <label for="device_name">Official device name:</label>
-                <input type="text" id="device_name" name="device_name"><br>
+                <input pattern="^[\u0000-\u007F]*$" type="text" id="device_name" name="device_name"><br>
                 <label for="manufacturing_company">Manufacturing company:</label>
-                <input type="text" id="manufacturing_company" name="manufacturing_company"><br>
+                <input pattern="^[\u0000-\u007F]*$" type="text" id="manufacturing_company" name="manufacturing_company"><br>
                 <input class="w3-button w3-black w3-padding-large w3-large w3-margin-top" type="submit"
                        value="Add device"/>
             </form>

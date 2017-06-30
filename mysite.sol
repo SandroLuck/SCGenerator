@@ -20,6 +20,10 @@ contract C:\Users\sandr\Desktop\WebStart\mysite is owned {
     event AlarmAll(
 		 string _id
     );
+    function getTriggers()onlyOwner
+    returns(
+    ){
+		return(    }
     function updateAll(
 			 string _id
     ) onlyOwner

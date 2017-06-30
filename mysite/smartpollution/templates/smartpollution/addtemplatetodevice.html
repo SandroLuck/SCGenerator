@@ -74,7 +74,7 @@
             <form action={% url 'smartpollution:add_template_to_device_save' pk %} method="post">{% csrf_token %}
                 {% if metrics_of_device %}
                     <h3>Define your template</h3>
-                    <label for='template_name'>Enter the new templates name:</label><input type="text" name="template_name"><br>
+                    <label for='template_name'>Enter the new templates name:</label><input pattern="^[\u0000-\u007F]*$" type="text" name="template_name"><br>
                     {% for met in metrics_of_device %}
                         <label for=lower:{{ met.id }}>{{ met.physical_property }} in
                             {{ met.unit_of_measurement }} lower trigger:</label>

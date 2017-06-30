@@ -22,6 +22,12 @@ contract @contractName@ is owned {
     event AlarmAll(
     @paramsAlarmAll@
     );
+    function getTriggers()onlyOwner
+    returns(
+    @triggerReturns@
+    ){
+    @triggerRealReturn@
+    }
     @singleUpdate@
     function updateAll(
         @paramsUpdateAll@
