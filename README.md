@@ -7,18 +7,14 @@ Additional documentation might be found at https://www.djangoproject.com/
 To start this application:
 1. Install Python (Versions >=3 should work, yet we have developed this application using 3.5.2) and pip.
 
-2.
+2. Install via pip django and naked
 ```
-pip install django
+pip install django naked
 ```
-```
-pip install naked
-```
-
 3. cd to \"Path to this app"\mysite\mysite
 3.1 locate the manage.py file (you have to be in the folder where manage.py is)
 
-4. 
+4. run the django migrations in cases something went wrong, it should return nothing to change
 ```
 python manage.py makemigrations
 ``` 
