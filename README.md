@@ -11,7 +11,7 @@ To start this application:
 ```
 pip install django naked
 ```
-3. cd to \"Path to this app"\mysite\mysite
+3. cd to /"Path to this app"/mysite/
 3.1 locate the manage.py file (you have to be in the folder where manage.py is)
 
 4. run the django migrations in cases something went wrong, it should return nothing to change
