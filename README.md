@@ -43,6 +43,13 @@ python manage.py createsuperuser
 You can now go to localhost:8000/admin/ and modify the database directly
 
 To get the full Blockchain support (Mainly the Smart Contractg Monitor):
-1. Install nodejs https://nodejs.org/en/download/
+1. Install nodejs https://nodejs.org/en/download/ and npm (or any package manager)
+```
+npm install web3 solc fs
+```
 2. Install geth https://github.com/ethereum/go-ethereum/wiki/geth
-  2.1 run 
+```
+geth --rpc --testnet --rpcapi="db,eth,net,web3,personal" --rpcport "8545" --rpcaddr "127.0.0.1" --rpccorsdomain "localhost"
+```
+Note that this will start the testnet ropsten. 
+The application will listen to every eth-blockchain running on the port 8545, so you can switch it with te mainnet or any other net.
