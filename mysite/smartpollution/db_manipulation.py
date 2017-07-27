@@ -178,6 +178,24 @@ def save_template_to_device(request, pk):
                 os.remove(path)
                 template.save()
             except:
+                #If node is not instaleld or blockchain is not available just add the deploy default value
+                templ = Template.objects.get(id=redirect_id)
+                temp_name = str(slugify(
+                    templ.template_name))
+                all_thres = Threshold.objects.filter(template=templ)
+                #do it for threshold template
+
+                template.gas_estimate_thres=53001
+                template.save()
+                #do it for none threshold template
+                mets = []
+                device = Device.objects.get(id=pk)
+                mets_quarry = device.metrics.all()
+
+                for met in mets_quarry:
+                    mets.append(str(met.physical_property) + str(met.unit_of_measurement))
+                template.gas_estimate_no_thres=53001
+                template.save()
                 pass
             print("CURRENT DIR:"+os.getcwd())
             create_new_smart_contract_with_thresholds(os.getcwd())
