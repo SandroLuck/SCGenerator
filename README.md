@@ -36,7 +36,10 @@ Since setting up the application is easiest with SQLite it is the default databa
 However if you wish to use a different database choose one from https://docs.djangoproject.com/en/1.11/ref/databases/ and follow the django documentation.
 
 Optional:
-To create an admin user: python manage.py createsuperuser
+To create an admin user: 
+```
+python manage.py createsuperuser
+```
 You can now go to localhost:8000/admin/ and modify the database directly
 
 To get the full Blockchain support (Mainly the Smart Contractg Monitor):
