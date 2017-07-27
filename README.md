@@ -5,13 +5,18 @@ Additional documentation might be found at https://www.djangoproject.com/
 
 To start this application:
 1. Install Python (Versions >=3 should work, yet we have developed this application using 3.5.2) and pip.
+
 2.1 pip install django
-  2.2 pip install naked
+2.2 pip install naked
+
 3. cd to \"Path to this app"\mysite\mysite
-  3.1 locate the manage.py file (you have to be in the folder where manage.py is)
+3.1 locate the manage.py file (you have to be in the folder where manage.py is)
+
 4. python manage.py makemigrations
-  4.1 python manage.py migrate
+4.1 python manage.py migrate
+
 5. run "python manage.py runserver"
+
 6. Open your browser and go to localhost:8000/smartpollution/
 
 Switching Database:
