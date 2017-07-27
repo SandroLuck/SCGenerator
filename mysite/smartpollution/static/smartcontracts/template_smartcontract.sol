@@ -1,6 +1,7 @@
 pragma solidity ^0.4.11;
 contract owned {
-  //This is an official solidity snippet from http://solidity.readthedocs.io/en/develop/contracts.html
+  //This is an official solidity snippet from
+  //http://solidity.readthedocs.io/en/develop/contracts.html
     function owned() { owner = msg.sender; }
     address owner;
     // This contract only defines a modifier but does not use
