@@ -7,9 +7,9 @@ Additional documentation might be found at https://www.djangoproject.com/
 To start this application:
 1. Install Python (Versions >=3 should work, yet we have developed this application using 3.5.2) and pip.
 
-2. Install via pip django and naked
+2. Install via pip django, psycopg2 and naked
 ```
-pip install django naked
+pip install django naked psycopg2
 ```
 3. cd to /"Path to this app"/mysite/
 3.1 locate the manage.py file (you have to be in the folder where manage.py is)
