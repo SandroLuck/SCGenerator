@@ -80,6 +80,10 @@
                     <li>Contract address: {{ contract.contract_address }}</li>
                     <script src='../../static/smartpollution/web3.min.js'></script>
                     <script src="../../static/smartpollution/jquery-3.1.1.min.js"></script>
+                    <script>
+                        document.getElementById('link' + String({{ contract.id }})).href = "https://ropsten.etherscan.io/address/" + String('{{ contract.contract_address }}');
+                        document.getElementById({{ contract.id }}).innerHTML = cont.metric();
+                    </script>
 
                 </ul>
                 <a href="{% url 'smartpollution:detail_contract' contract.id %}">Look up details</a>
