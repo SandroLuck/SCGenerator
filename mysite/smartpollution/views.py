@@ -128,7 +128,7 @@ def detail_contract_view(request, pk):
         arguments = {}
         contract=Contract.objects.get(id=pk)
         arguments['contract'] = contract
-        arguments['info']=get_contract_info(abi=contract.contract_abi, address=contract.contract_address)
+        arguments['info']= get_contract_info(abi=contract.contract_abi, address=contract.contract_address)
 
         return render(request, 'smartpollution/detailcontract.html', arguments)
     except Exception as e:

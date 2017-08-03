@@ -70,9 +70,9 @@ def create_new_smart_contract_with_thresholds(template_name='PollutionTracker', 
             else:
                 if "@tresholdsInit@" in lin:
                     for thres in thresholds:
-                        out_file.write('\t\tint16 ' + str(thres.metric.physical_property) + str(
+                        out_file.write('\t\tint16 constant ' + str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + 'LT =' + str(int(thres.lower_trigger)) + ';\n')
-                        out_file.write('\t\tint16 ' + str(thres.metric.physical_property) + str(
+                        out_file.write('\t\tint16 constant ' + str(thres.metric.physical_property) + str(
                             thres.metric.unit_of_measurement) + 'UT =' + str(int(thres.upper_trigger)) + ';\n')
                 if "@contractName@" in lin:
                     out_file.write(lin.replace('@contractName@', str(template_name).replace('-', '')))
@@ -156,17 +156,16 @@ def create_new_smart_contract_with_thresholds(template_name='PollutionTracker', 
                         if i < len(thresholds):
                             out_file.write(' ,')
                 if "@triggerRealReturn@" in lin:
-                    i = 0;
+                    i = 0
                     out_file.write('\t\treturn(')
                     for thres in thresholds:
+                        print('GOGOGO')
                         i = i + 1
-                        out_file.write('\t\t' + str(thres.metric.physical_property) + str(
-                            thres.metric.unit_of_measurement) +'LT , ' + str(
-                            thres.metric.physical_property) + str(thres.metric.unit_of_measurement)
-                                       + 'UT');
+                        out_file.write(str(int(thres.lower_trigger)) + ' ,' + str(int(thres.upper_trigger)))
                         if i < len(thresholds):
-                            out_file.write(' ,')
+                            out_file.write(', ')
                         else:
                             out_file.write(');')
+                            print('END')
 
     return os.path.join(os.getcwd(), template_name + '.sol')

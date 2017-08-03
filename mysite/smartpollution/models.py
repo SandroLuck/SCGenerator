@@ -37,7 +37,7 @@ class Threshold(models.Model):
     lower_trigger=models.IntegerField(blank=True, null=True)
     upper_trigger=models.IntegerField(blank=True, null=True)
     def __str__(self):
-        return str(self.id)
+        return str('TO be done.')
 
 class Contract(models.Model):
     contract_name=models.CharField(max_length=200, null=True)

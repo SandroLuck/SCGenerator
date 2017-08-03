@@ -22,7 +22,8 @@ contract @contractName@ is owned {
     event AlarmAll(
     @paramsAlarmAll@
     );
-    function getTriggers()onlyOwner
+    //The values returned by this function have the same order as the values listed at the beginning of this Smart Contract
+    function getTriggers() constant onlyOwner
     returns(
     @triggerReturns@
     ){

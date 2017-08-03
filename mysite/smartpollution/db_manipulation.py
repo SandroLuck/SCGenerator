@@ -79,7 +79,6 @@ def add_contract(request):
                 contract_address=form.cleaned_data['contract_address']
                 contract_abi=form.cleaned_data['contract_abi']
                 contract = Contract(contract_name=contract_name, contract_address=contract_address, contract_abi=contract_abi)
-                print(contract_name, contract_address, contract_abi)
                 contract.save()
                 redirect_id=contract.id
         return detail_contract_view(request, redirect_id)
@@ -118,10 +117,12 @@ def save_template_to_device(request, pk):
     :return: redirect user to mainpage
     """
     try:
+        print('Adding a template')
         redirect_id = 1;
         if request.POST:
             device = Device.objects.get(id=pk)
             template = Template(device=device)
+            template.save()
             for key, value in request.POST.items():
                 if len(value) > 0:
                     if "lower:" in key or "upper:" in key:
@@ -143,27 +144,21 @@ def save_template_to_device(request, pk):
                     if "template_name" in key:
                         template.template_name = value.replace(' ','')
                         template.save()
-                        redirect_id=template.id;
+                        redirect_id=template.id
             #Estimate gas costs
             try:
                 print("STARTING GAS CALCULATIONS")
                 templ = Template.objects.get(id=redirect_id)
-                print("TEMPLE"+str(templ))
                 temp_name = str(slugify(
                     templ.template_name))
                 all_thres = Threshold.objects.filter(template=templ)
-                print("ALL_THRES:"+str(all_thres))
                 #do it for threshold template
 
                 path = create_new_smart_contract_with_thresholds(template_name=temp_name, thresholds=all_thres)
-                print("PATH 1 for smartC:"+path)
                 gas_estimate=get_contract_gas(path)
-                print("GAS ESTIAMTE IS:"+str(gas_estimate))
                 template.gas_estimate_thres=gas_estimate
-                print("Befr del")
                 os.remove(path)
                 template.save()
-                print("NON THRES STARTING")
                 #do it for none threshold template
                 mets = []
                 device = Device.objects.get(id=pk)
@@ -173,11 +168,11 @@ def save_template_to_device(request, pk):
                 for met in mets_quarry:
                     mets.append(str(met.physical_property) + str(met.unit_of_measurement))
                 path = create_new_smart_contract(template_name=temp_name, metrics=mets)
-                print("PATH 2 for smartC:"+path)
                 template.gas_estimate_no_thres=get_contract_gas(path)
                 os.remove(path)
                 template.save()
             except:
+                print("No Blockchain found...")
                 #If node is not instaleld or blockchain is not available just add the deploy default value
                 templ = Template.objects.get(id=redirect_id)
                 temp_name = str(slugify(
@@ -197,7 +192,6 @@ def save_template_to_device(request, pk):
                 template.gas_estimate_no_thres=53001
                 template.save()
                 pass
-            print("CURRENT DIR:"+os.getcwd())
             create_new_smart_contract_with_thresholds(os.getcwd())
 
         return detail_template_view(request, redirect_id);
