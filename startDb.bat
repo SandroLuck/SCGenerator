@@ -1,1 +1,0 @@
-"C:\Program Files\PostgreSQL\9.6\bin\pg_ctl.exe" -D "C:\Users\sandr\Desktop\WebStart\pgdb" -l logdatei start
