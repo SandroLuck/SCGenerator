@@ -2,6 +2,13 @@
 This is the Smart Contract Generator Django webapp:
 maintained and developed by: Sandro Luck
 
+
+Blockchains have made tremendouse changes during the last years on financial and non financial applications. 
+A promising new usage of the blockchain technology have been Smart Contracts, Turing complete programms globally evaluated on the blockchain. 
+Generating vast amounts of Smart Contract for Sensor based use cases has been a time consuming and difficult task. 
+The Smart Contract Generator Framework allows the user to automate the creation of Smart Contracts for Internet of Things related use cases and speed up the creation and monitoring process. 
+The Django based graphical web application aids the user at generating and writing these Smart Contracts.
+
 This project follows the,
 The MIT License (MIT)
 
