@@ -14,7 +14,7 @@ contract owned {
         _;
     }
 }
-contract C:\SCGenerator\mysite is owned {
+contract A:\finalSetupSoftProj\mysite is owned {
 
 
     event AlarmAll(
